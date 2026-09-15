@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Something Awesome Is Coming</title>
+<meta name="description" content="Our new website is on its way. Something awesome will be available soon." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ivory:      #fdfcfa;
+    --paper:      #f6f2ec;
+    --ink:        #1e1a16;
+    --muted:      #6d6257;
+    --gold:       #c9a227;
+    --gold-soft:  #e3c86b;
+    --copper:     #b06e3f;
+    --copper-deep:#8a4f2a;
+    --line:       rgba(176, 110, 63, .22);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, rgba(227, 200, 107, .20) 0%, rgba(227, 200, 107, 0) 60%),
+      radial-gradient(90% 70% at 90% 110%, rgba(176, 110, 63, .16) 0%, rgba(176, 110, 63, 0) 62%),
+      linear-gradient(180deg, var(--ivory) 0%, var(--paper) 100%);
+    color: var(--ink);
+    font-family: 'Jost', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* fine gold hairline frame */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 18px;
+    border: 1px solid var(--line);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: min(680px, 100%);
+    text-align: center;
+  }
+
+  /* ---- monogram ---- */
+  .mark {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, #fff 0%, var(--paper) 100%);
+    box-shadow: 0 10px 30px -14px rgba(138, 79, 42, .45);
+    animation: rise .9s cubic-bezier(.22,.9,.3,1) both;
+  }
+  .mark span {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    background: linear-gradient(135deg, var(--copper-deep) 0%, var(--gold) 48%, var(--copper) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---- eyebrow ---- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--copper-deep);
+    margin-bottom: 26px;
+    animation: rise .9s cubic-bezier(.22,.9,.3,1) .08s both;
+  }
+  .eyebrow::before,
+  .eyebrow::after {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ---- headline ---- */
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 7vw, 4.25rem);
+    line-height: 1.12;
+    letter-spacing: .005em;
+    margin: 0 0 22px;
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .16s both;
+  }
+  h1 em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--copper-deep) 0%, var(--gold) 45%, var(--copper) 85%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  p.lede {
+    max-width: 44ch;
+    margin: 0 auto;
+    font-size: clamp(.98rem, 2.1vw, 1.08rem);
+    line-height: 1.85;
+    color: var(--muted);
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .24s both;
+  }
+
+  /* ---- divider ---- */
+  .divider {
+    width: 160px;
+    height: 1px;
+    margin: 40px auto;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), var(--copper), var(--gold-soft), transparent);
+    position: relative;
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .3s both;
+  }
+  .divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: linear-gradient(135deg, var(--gold), var(--copper));
+  }
+
+  /* ---- progress ---- */
+  .progress {
+    width: min(320px, 78%);
+    margin: 0 auto 14px;
+    height: 2px;
+    background: rgba(176, 110, 63, .14);
+    border-radius: 2px;
+    overflow: hidden;
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .36s both;
+  }
+  .progress i {
+    display: block;
+    height: 100%;
+    width: 42%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold-soft), var(--gold), var(--copper));
+    animation: sweep 2.8s ease-in-out infinite;
+  }
+
+  .status {
+    font-size: 11px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .42s both;
+  }
+
+  footer {
+    margin-top: 52px;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(109, 98, 87, .75);
+    animation: rise 1s cubic-bezier(.22,.9,.3,1) .5s both;
+  }
+  footer a {
+    color: var(--copper-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .25s ease, border-color .25s ease;
+  }
+  footer a:hover { color: var(--gold); border-color: var(--gold); }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes sweep {
+    0%   { transform: translateX(-105%); }
+    100% { transform: translateX(245%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 480px) {
+    body::before { inset: 12px; }
+    .divider { margin: 32px auto; }
+    footer { margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="mark"><span>A</span></div>
+
+    <div class="eyebrow">Coming Soon</div>
+
+    <h1>We&rsquo;re crafting<br />something <em>awesome</em></h1>
+
+    <p class="lede">
+      Our new website is being carefully put together — and it will be
+      available very soon. Thank you for your patience.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="progress"><i></i></div>
+    <div class="status">Launching Shortly</div>
+
+    <footer>
+      &copy; <span id="year">2026</span> &middot;
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
