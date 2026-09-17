@@ -63,41 +63,49 @@
   var year = document.getElementById('year');
   if (year) { year.textContent = new Date().getFullYear(); }
 
-  /* ---- enquiry form -> pre-composed email ----
-     Static hosting has no mail backend, so the form opens the visitor's
-     email client with the enquiry pre-filled. Swap the submit handler for
-     a real endpoint (Formspree, or a PHP script on Hostinger) when ready. */
+  /* ---- enquiry form ----
+     The form posts to form-handler.php, which emails the enquiry and sends
+     the visitor back here with ?status=... We stamp the load time so the
+     handler can reject submissions that arrive impossibly fast, disable the
+     button on submit, and render whatever status came back. */
   var form = document.getElementById('enquiry-form');
+
   if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var data = new FormData(form);
-      var get = function (k) { return (data.get(k) || '').toString().trim(); };
+    var started = document.getElementById('f-started');
+    if (started) { started.value = String(Date.now()); }
 
-      var lines = [
-        'Name: ' + get('name'),
-        'Company: ' + get('company'),
-        'Email: ' + get('email'),
-        'Phone: ' + get('phone'),
-        'Requirement: ' + get('requirement'),
-        'Approximate quantity: ' + get('quantity'),
-        'Timeline: ' + get('timeline'),
-        '',
-        'Details:',
-        get('message')
-      ];
-
-      var subject = 'Gifting enquiry — ' + (get('company') || get('name') || 'New enquiry');
-      var to = form.getAttribute('data-mailto') || 'hello@jkoventuress.com';
-
-      window.location.href = 'mailto:' + to +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(lines.join('\n'));
-
-      var note = document.getElementById('form-status');
-      if (note) {
-        note.textContent = 'Opening your email app with the enquiry filled in. If nothing happens, write to ' + to + ' directly.';
+    form.addEventListener('submit', function () {
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
       }
     });
+  }
+
+  var alertBox = document.getElementById('form-alert');
+  if (alertBox) {
+    var MESSAGES = {
+      sent: ['Thank you — your enquiry has been sent. Our team will get back to you shortly.', false],
+      missing: ['Please add your name, email and a little detail about the requirement, then try again.', true],
+      bademail: ['That email address does not look right. Please check it and resend.', true],
+      error: ['Sorry — the enquiry could not be sent just now. Please email hello@jkoventuress.com directly.', true]
+    };
+
+    var status = new URLSearchParams(window.location.search).get('status');
+    var entry = status && Object.prototype.hasOwnProperty.call(MESSAGES, status) ? MESSAGES[status] : null;
+
+    if (entry) {
+      alertBox.textContent = entry[0];
+      alertBox.classList.toggle('is-error', entry[1]);
+      alertBox.hidden = false;
+
+      if (!entry[1] && form) { form.reset(); }
+
+      /* drop the query string so a refresh does not repeat the message */
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    }
   }
 })();

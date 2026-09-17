@@ -688,6 +688,32 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted-light); }
 
 .field.full .btn { align-self: flex-start; }
+
+/* honeypot — kept out of sight and out of the tab order, never display:none
+   (some bots skip hidden fields, and screen readers get aria-hidden instead) */
+.hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.field label .req { color: var(--bronze); margin-left: 2px; }
+.field input:user-invalid, .field textarea:user-invalid { border-color: #b4553f; }
+
+/* status message shown after the handler redirects back */
+.form-alert {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #fff, var(--champagne));
+  font-size: .94rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.form-alert.is-error { border-left-color: #b4553f; }
 .form-note { font-size: .84rem; color: var(--muted-light); margin-top: 16px; }
 
 @media (max-width: 680px) {
