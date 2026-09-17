@@ -3,244 +3,492 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Something Awesome Is Coming</title>
-<meta name="description" content="Our new website is on its way. Something awesome will be available soon." />
+<title>J&amp;Ko Ventures — Corporate Gifting &amp; Customised Gift Solutions</title>
+<meta name="description" content="J&amp;Ko Ventures is a corporate and customised gifting company creating curated hampers, branded merchandise, welcome kits, trophies, lanyards, name plates and premium executive gifts for businesses." />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --ivory:      #fdfcfa;
-    --paper:      #f6f2ec;
-    --ink:        #1e1a16;
-    --muted:      #6d6257;
-    --gold:       #c9a227;
-    --gold-soft:  #e3c86b;
-    --copper:     #b06e3f;
-    --copper-deep:#8a4f2a;
-    --line:       rgba(176, 110, 63, .22);
-  }
-
-  * { box-sizing: border-box; }
-
-  html, body { height: 100%; }
-
-  body {
-    margin: 0;
-    min-height: 100svh;
-    display: grid;
-    place-items: center;
-    padding: 48px 24px;
-    background:
-      radial-gradient(120% 90% at 50% -10%, rgba(227, 200, 107, .20) 0%, rgba(227, 200, 107, 0) 60%),
-      radial-gradient(90% 70% at 90% 110%, rgba(176, 110, 63, .16) 0%, rgba(176, 110, 63, 0) 62%),
-      linear-gradient(180deg, var(--ivory) 0%, var(--paper) 100%);
-    color: var(--ink);
-    font-family: 'Jost', 'Segoe UI', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-
-  /* fine gold hairline frame */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 18px;
-    border: 1px solid var(--line);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .wrap {
-    position: relative;
-    z-index: 1;
-    width: min(680px, 100%);
-    text-align: center;
-  }
-
-  /* ---- monogram ---- */
-  .mark {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto 34px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: linear-gradient(145deg, #fff 0%, var(--paper) 100%);
-    box-shadow: 0 10px 30px -14px rgba(138, 79, 42, .45);
-    animation: rise .9s cubic-bezier(.22,.9,.3,1) both;
-  }
-  .mark span {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: .06em;
-    background: linear-gradient(135deg, var(--copper-deep) 0%, var(--gold) 48%, var(--copper) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* ---- eyebrow ---- */
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 11px;
-    letter-spacing: .34em;
-    text-transform: uppercase;
-    color: var(--copper-deep);
-    margin-bottom: 26px;
-    animation: rise .9s cubic-bezier(.22,.9,.3,1) .08s both;
-  }
-  .eyebrow::before,
-  .eyebrow::after {
-    content: "";
-    width: 34px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  /* ---- headline ---- */
-  h1 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 7vw, 4.25rem);
-    line-height: 1.12;
-    letter-spacing: .005em;
-    margin: 0 0 22px;
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .16s both;
-  }
-  h1 em {
-    font-style: italic;
-    background: linear-gradient(100deg, var(--copper-deep) 0%, var(--gold) 45%, var(--copper) 85%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  p.lede {
-    max-width: 44ch;
-    margin: 0 auto;
-    font-size: clamp(.98rem, 2.1vw, 1.08rem);
-    line-height: 1.85;
-    color: var(--muted);
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .24s both;
-  }
-
-  /* ---- divider ---- */
-  .divider {
-    width: 160px;
-    height: 1px;
-    margin: 40px auto;
-    background: linear-gradient(90deg, transparent, var(--gold-soft), var(--copper), var(--gold-soft), transparent);
-    position: relative;
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .3s both;
-  }
-  .divider::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: linear-gradient(135deg, var(--gold), var(--copper));
-  }
-
-  /* ---- progress ---- */
-  .progress {
-    width: min(320px, 78%);
-    margin: 0 auto 14px;
-    height: 2px;
-    background: rgba(176, 110, 63, .14);
-    border-radius: 2px;
-    overflow: hidden;
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .36s both;
-  }
-  .progress i {
-    display: block;
-    height: 100%;
-    width: 42%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--gold-soft), var(--gold), var(--copper));
-    animation: sweep 2.8s ease-in-out infinite;
-  }
-
-  .status {
-    font-size: 11px;
-    letter-spacing: .26em;
-    text-transform: uppercase;
-    color: var(--muted);
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .42s both;
-  }
-
-  footer {
-    margin-top: 52px;
-    font-size: 11px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: rgba(109, 98, 87, .75);
-    animation: rise 1s cubic-bezier(.22,.9,.3,1) .5s both;
-  }
-  footer a {
-    color: var(--copper-deep);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
-    transition: color .25s ease, border-color .25s ease;
-  }
-  footer a:hover { color: var(--gold); border-color: var(--gold); }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-  }
-  @keyframes sweep {
-    0%   { transform: translateX(-105%); }
-    100% { transform: translateX(245%); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
-  }
-
-  @media (max-width: 480px) {
-    body::before { inset: 12px; }
-    .divider { margin: 32px auto; }
-    footer { margin-top: 40px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <main class="wrap">
-    <div class="mark"><span>A</span></div>
 
-    <div class="eyebrow">Coming Soon</div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="J&amp;Ko Ventures — home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8cd8b"/><stop offset="45%" stop-color="#c9a227"/><stop offset="100%" stop-color="#8c6239"/>
+          </linearGradient></defs>
+          <g fill="none" stroke="url(#bm)" stroke-width="3.2">
+            <circle cx="100" cy="100" r="88"/>
+            <ellipse cx="100" cy="100" rx="36" ry="88"/>
+            <path d="M17 68h166M17 132h166"/>
+          </g>
+        </svg>
+        <b>J&amp;K</b>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">J&amp;Ko</span>
+        <span class="brand-sub">Ventures</span>
+      </span>
+    </a>
 
-    <h1>We&rsquo;re crafting<br />something <em>awesome</em></h1>
+    <nav class="nav" id="primary-nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Gifting Solutions</a>
+      <a href="occasions.html">Occasions</a>
+      <a href="approach.html">Our Approach</a>
+      <a href="why-us.html">Why Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-    <p class="lede">
-      Our new website is being carefully put together — and it will be
-      available very soon. Thank you for your patience.
-    </p>
+    <a class="btn btn-primary header-cta" href="contact.html">Enquire</a>
 
-    <div class="divider"></div>
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav"><i></i></button>
+  </div>
+</header>
 
-    <div class="progress"><i></i></div>
-    <div class="status">Launching Shortly</div>
+<main>
 
-    <footer>
-      &copy; <span id="year">2026</span> &middot;
-      <a href="mailto:hello@example.com">hello@example.com</a>
-    </footer>
-  </main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Corporate &amp; Customised Gifting</span>
+        <h1>Thoughtful gifting.<br />Meaningful <em class="metal">connections</em>.<br />Lasting impressions.</h1>
+        <p class="lede">
+          At J&amp;Ko Ventures we believe a gift is more than an object — it is a thoughtful
+          expression of appreciation, recognition, celebration and connection. We help
+          businesses create gifting experiences their people actually remember.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="contact.html">Start an Enquiry</a>
+          <a class="btn btn-ghost" href="services.html">Explore Solutions</a>
+        </div>
+      </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+      <div class="emblem" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><linearGradient id="he" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8cd8b"/><stop offset="40%" stop-color="#c9a227"/><stop offset="100%" stop-color="#8c6239"/>
+          </linearGradient></defs>
+          <g fill="none" stroke="url(#he)" stroke-width="1.4" opacity=".85">
+            <circle cx="100" cy="100" r="92"/>
+            <ellipse cx="100" cy="100" rx="34" ry="92"/>
+            <ellipse cx="100" cy="100" rx="66" ry="92"/>
+            <path d="M22 62h156M8 100h184M22 138h156"/>
+          </g>
+        </svg>
+        <div class="emblem-type">
+          <div class="mono">J&amp;Ko</div>
+          <div class="word">Ventures</div>
+          <div class="tag">Global Vision</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="section-white">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Who We Are</span>
+        <h2>Gifting, turned into a relationship-building opportunity</h2>
+        <p class="lede">
+          J&amp;Ko Ventures was created with a vision to transform corporate gifting from a
+          routine business activity into an opportunity to build stronger relationships.
+        </p>
+        <p style="color:var(--muted)">
+          Every business has its own identity, culture, values and audience — which is why we
+          do not believe in a one-size-fits-all approach. We work closely with our clients to
+          understand their requirement, budget, occasion, brand personality and recipients
+          before creating the right gifting solution.
+        </p>
+        <div class="divider"></div>
+        <a class="btn btn-ghost" href="about.html">More About Us</a>
+      </div>
+      <div class="split-media reveal d2">
+        <span class="glyph">J&amp;Ko</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="section-tint" style="padding-block:clamp(48px,6vw,72px)">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><b>18+</b><span>Gifting Categories</span></div>
+        <div class="stat"><b>End&#8209;to&#8209;End</b><span>Concept to Delivery</span></div>
+        <div class="stat"><b>Any Scale</b><span>Startup to Enterprise</span></div>
+        <div class="stat"><b>100%</b><span>Custom Branded</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE DO ============ -->
+  <section class="section-white">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">What We Do</span>
+        <h2>Complete corporate gifting solutions</h2>
+        <p>
+          From thoughtfully curated hampers to premium customised merchandise, welcome kits,
+          festive gifts, promotional products and executive gifts — designed around your brand
+          and your occasion.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <div class="card-icon"><i>I</i></div>
+          <h3>Customised Corporate Gifts</h3>
+          <p>Gifts built around your brand identity, occasion and recipients — never picked off a generic catalogue.</p>
+        </article>
+        <article class="card reveal d1">
+          <div class="card-icon"><i>II</i></div>
+          <h3>Premium Executive Gifts</h3>
+          <p>Minimal, sophisticated pieces for leadership, VIP clients and senior stakeholders.</p>
+        </article>
+        <article class="card reveal d2">
+          <div class="card-icon"><i>III</i></div>
+          <h3>Employee Welcome Kits</h3>
+          <p>Joining and onboarding kits that make a new team member feel expected and valued from day one.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i>IV</i></div>
+          <h3>Corporate Gift Hampers</h3>
+          <p>Curated combinations assembled, branded and presented as a single considered package.</p>
+        </article>
+        <article class="card reveal d1">
+          <div class="card-icon"><i>V</i></div>
+          <h3>Branded Merchandise</h3>
+          <p>Promotional and branded products that keep your identity visible long after the event.</p>
+        </article>
+        <article class="card reveal d2">
+          <div class="card-icon"><i>VI</i></div>
+          <h3>Recognition &amp; Signage</h3>
+          <p>Trophies, awards, name plates, lanyards and ID cards produced to a consistent finish.</p>
+        </article>
+      </div>
+
+      <div class="btn-row center" style="margin-top:44px">
+        <a class="btn btn-primary" href="services.html">View All Gifting Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIGNATURE CATEGORIES ============ -->
+  <section class="section-tint">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Signature Categories</span>
+        <h2>Recognition, identity and everyday essentials</h2>
+        <p>Three categories we are regularly asked for — produced with the same attention to finish as everything else we make.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <h3>Lanyards &amp; ID Cards</h3>
+          <p>
+            Custom-printed lanyards, PVC and RFID ID cards, badge holders, retractable reels and
+            accessory kits — colour-matched to your brand for offices, conferences and events.
+          </p>
+        </article>
+        <article class="card reveal d1">
+          <h3>Trophies &amp; Awards</h3>
+          <p>
+            Crystal, acrylic, metal and wooden trophies, memento plaques, certificates and
+            recognition sets — engraved or printed for annual awards, milestones and achievements.
+          </p>
+        </article>
+        <article class="card reveal d2">
+          <h3>Name Plates</h3>
+          <p>
+            Desk, door, cabin and reception name plates in acrylic, brass, steel and wood,
+            with engraved or printed branding for a consistent look across your workplace.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="section-white">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Our Approach</span>
+        <h2>Great gifting starts with understanding</h2>
+        <p>
+          We select products, combinations, colours, packaging and personalisation options so
+          that every gift feels intentional rather than assembled.
+        </p>
+      </div>
+
+      <div class="process reveal" style="margin-bottom:56px">
+        <i>Understand</i><b>&rarr;</b>
+        <i>Curate</i><b>&rarr;</b>
+        <i>Customise</i><b>&rarr;</b>
+        <i>Brand</i><b>&rarr;</b>
+        <i>Pack</i><b>&rarr;</b>
+        <i>Deliver</i>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card step reveal">
+          <span class="num">01</span>
+          <h4>Understand</h4>
+          <p>Your brand, occasion, audience and budget — before a single product is proposed.</p>
+        </div>
+        <div class="card step reveal d1">
+          <span class="num">02</span>
+          <h4>Curate &amp; Customise</h4>
+          <p>Products, combinations and personalisation options shaped to the brief.</p>
+        </div>
+        <div class="card step reveal d2">
+          <span class="num">03</span>
+          <h4>Brand &amp; Pack</h4>
+          <p>Logo placement, inserts, messages and packaging that present the gift properly.</p>
+        </div>
+        <div class="card step reveal d3">
+          <span class="num">04</span>
+          <h4>Quality &amp; Deliver</h4>
+          <p>Checks, organised order management and delivery to one location or many.</p>
+        </div>
+      </div>
+
+      <div class="btn-row center" style="margin-top:44px">
+        <a class="btn btn-ghost" href="approach.html">See How We Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OCCASIONS ============ -->
+  <section class="section-tint">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Designed for Every Occasion</span>
+        <h2>Corporate gifting is not limited to festivals</h2>
+        <p>
+          Businesses have countless opportunities to appreciate and connect with their people
+          and partners throughout the year.
+        </p>
+      </div>
+
+      <div class="pills reveal" style="justify-content:center">
+        <span class="pill">Employee Onboarding</span>
+        <span class="pill">Employee Appreciation</span>
+        <span class="pill">Client Appreciation</span>
+        <span class="pill">Diwali &amp; Festivals</span>
+        <span class="pill">Annual Celebrations</span>
+        <span class="pill">Conferences</span>
+        <span class="pill">Events</span>
+        <span class="pill">Product Launches</span>
+        <span class="pill">Business Milestones</span>
+        <span class="pill">Dealer &amp; Distributor Gifting</span>
+        <span class="pill">New Partnerships</span>
+        <span class="pill">Awards &amp; Recognition</span>
+        <span class="pill">Customer Loyalty</span>
+        <span class="pill">Special Occasions</span>
+      </div>
+
+      <div class="btn-row center" style="margin-top:40px">
+        <a class="btn btn-ghost" href="occasions.html">Explore Occasions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERSONALISATION + SUSTAINABILITY ============ -->
+  <section class="section-white">
+    <div class="wrap split reverse">
+      <div class="split-media reveal">
+        <span class="glyph">&#10022;</span>
+      </div>
+      <div class="reveal d1">
+        <span class="eyebrow">Personalisation</span>
+        <h2>A personalised gift creates a stronger connection</h2>
+        <p style="color:var(--muted)">
+          We offer a wide range of personalisation and branding options — corporate logos,
+          employee names, customised messages, branded packaging, personalised inserts and
+          bespoke gift combinations.
+        </p>
+        <p style="color:var(--muted)">
+          Our objective is to make every recipient feel the gift was thoughtfully selected for
+          them, rather than simply picked from a catalogue.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tint">
+    <div class="wrap split">
+      <div class="split-media reveal">
+        <span class="glyph">&#9906;</span>
+      </div>
+      <div class="reveal d1">
+        <span class="eyebrow">Sustainable Gifting</span>
+        <h2>Thoughtful gifting should create impact, not waste</h2>
+        <p style="color:var(--muted)">
+          As businesses become increasingly conscious of their environmental impact, gifting is
+          evolving too. We are committed to promoting responsible and sustainable choices
+          wherever possible.
+        </p>
+        <ul class="tick-list cols">
+          <li>Reusable products</li>
+          <li>Eco-conscious materials</li>
+          <li>Sustainable packaging</li>
+          <li>Built for long-term use</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="section-white">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Why Choose Us</span>
+        <h2>A gifting partner, not just a supplier</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <h3>One-Stop Solution</h3>
+          <p>From concept and product selection to branding, packaging and delivery, we manage the complete process.</p>
+        </article>
+        <article class="card reveal d1">
+          <h3>Customised for Your Brand</h3>
+          <p>Every gifting requirement is different. We create solutions around your brand and objectives.</p>
+        </article>
+        <article class="card reveal d2">
+          <h3>Quality-Focused</h3>
+          <p>We focus on product quality, presentation, customisation and attention to detail.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Creative &amp; Contemporary</h3>
+          <p>Our gifting concepts are designed to be modern, useful, attractive and memorable.</p>
+        </article>
+        <article class="card reveal d1">
+          <h3>Flexible Solutions</h3>
+          <p>Solutions for different occasions, budgets, quantities and business requirements.</p>
+        </article>
+        <article class="card reveal d2">
+          <h3>Reliable Fulfilment</h3>
+          <p>Organised order management, quality checks, professional packaging and timely delivery.</p>
+        </article>
+      </div>
+
+      <div class="btn-row center" style="margin-top:44px">
+        <a class="btn btn-ghost" href="why-us.html">Why Work With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section class="section-tint quote-band">
+    <div class="wrap-narrow reveal">
+      <span class="eyebrow center">More Than a Gift</span>
+      <p class="lines">
+        <span>Thank you.</span>
+        <span>We appreciate you.</span>
+        <span>We value our relationship.</span>
+        <span>We celebrate your success.</span>
+        <span>We are glad to have you with us.</span>
+      </p>
+      <div class="divider center"></div>
+      <p style="color:var(--muted)">
+        A great gift may be opened in a moment, but the impression it creates can last
+        much longer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band">
+    <div class="wrap-narrow reveal">
+      <span class="eyebrow center">Let&rsquo;s Create Something Meaningful</span>
+      <h2>Turn your ideas into gifts that people remember</h2>
+      <p>
+        Planning your next corporate event, welcoming new employees, appreciating your team,
+        strengthening client relationships or preparing for the festive season — our team is
+        ready to help.
+      </p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">Discuss Your Requirement</a>
+        <a class="btn btn-ghost" href="services.html">Browse Solutions</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <defs><linearGradient id="fm" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8cd8b"/><stop offset="45%" stop-color="#c9a227"/><stop offset="100%" stop-color="#8c6239"/>
+            </linearGradient></defs>
+            <g fill="none" stroke="url(#fm)" stroke-width="3.2">
+              <circle cx="100" cy="100" r="88"/>
+              <ellipse cx="100" cy="100" rx="36" ry="88"/>
+              <path d="M17 68h166M17 132h166"/>
+            </g>
+          </svg>
+          <b>J&amp;K</b>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">J&amp;Ko</span>
+          <span class="brand-sub">Ventures</span>
+        </span>
+      </a>
+      <p>
+        Corporate gifting, customised gifts, branded merchandise and premium gift solutions —
+        designed around your brand, occasion and people.
+      </p>
+    </div>
+
+    <div>
+      <h4>Explore</h4>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Gifting Solutions</a></li>
+        <li><a href="occasions.html">Occasions</a></li>
+        <li><a href="approach.html">Our Approach</a></li>
+        <li><a href="why-us.html">Why Choose Us</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Popular</h4>
+      <ul class="footer-links">
+        <li><a href="services.html#hampers">Gift Hampers</a></li>
+        <li><a href="services.html#welcome-kits">Welcome Kits</a></li>
+        <li><a href="services.html#lanyards">Lanyards &amp; ID Cards</a></li>
+        <li><a href="services.html#trophies">Trophies &amp; Awards</a></li>
+        <li><a href="services.html#name-plates">Name Plates</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Get in Touch</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@jkoventuress.com">hello@jkoventuress.com</a></li>
+        <li><a href="contact.html">Send an Enquiry</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>&copy; <span id="year">2026</span> J&amp;Ko Ventures. All rights reserved.</span>
+    <span class="tagline">Corporate Gifting &middot; Customised Gifts &middot; Branded Merchandise</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
