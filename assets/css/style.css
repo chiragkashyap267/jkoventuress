@@ -571,6 +571,52 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   line-height: 1;
 }
 
+/* --- photography ---------------------------------------------------------
+   The inset hairline sits above the image as a frame, and a light gold wash
+   keeps photographs from drifting away from the warm palette. */
+
+.split-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.split-media::before { z-index: 2; pointer-events: none; }
+.split-media.has-photo::before { border-color: rgba(255, 255, 255, .42); }
+.split-media.has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(150deg, rgba(201, 162, 39, .12) 0%, rgba(140, 98, 57, .15) 100%);
+  pointer-events: none;
+}
+
+/* image at the head of a card, bleeding to the card edges */
+.card-media {
+  position: relative;
+  margin: -32px -28px 24px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--champagne);
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease);
+}
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(201, 162, 39, .10), rgba(140, 98, 57, .13));
+  pointer-events: none;
+}
+.card:hover .card-media img { transform: scale(1.045); }
+
 /* ---------- process strip ---------- */
 
 .process {
@@ -837,6 +883,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   .btn { padding: 13px 24px; font-size: 11px; }
   .brand-sub { letter-spacing: .28em; }
   .card { padding: 28px 22px; }
+  .card-media { margin: -28px -22px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

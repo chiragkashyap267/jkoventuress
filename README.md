@@ -56,28 +56,26 @@ the message is not authenticated. The fix is to send over authenticated SMTP
 instead — create the mailbox in Hostinger (Emails → Create), then use PHPMailer
 with those SMTP credentials in place of the `mail()` call.
 
-## Adding photography
+## Photography
 
-Product sections currently use gold geometric placeholders — the
-`<div class="split-media">` blocks containing a `<span class="glyph">`.
+The site ships with twelve stock photographs in `assets/img/photos/`, all under
+licences allowing commercial use. Sources, photographers and licence terms are
+listed in [IMAGE-CREDITS.md](IMAGE-CREDITS.md).
 
-To use a real photo, replace the inner span with an image:
+These are placeholders for real J&Ko Ventures product photography. To swap one
+in, keep the same filename and 1200×1000 dimensions and replace the file — no
+markup changes needed. Update the `alt` text if the subject changes, and keep
+IMAGE-CREDITS.md accurate.
 
-```html
-<div class="split-media">
-  <img src="assets/img/hampers.jpg" alt="Curated corporate gift hamper" />
-</div>
-```
+Photos appear in two places:
 
-Add this to `assets/css/style.css` so photos fill the frame:
+- `<div class="split-media has-photo">` — the large framed images beside text
+- `<div class="card-media">` — thumbnails at the top of a category card
 
-```css
-.split-media img { width: 100%; height: 100%; object-fit: cover; }
-.split-media:has(img)::before { display: none; }
-```
-
-Put files in `assets/img/`. Export at roughly 1200×1000, compressed, and
-prefer `.webp` where possible. Always write a real `alt` description.
+A light gold wash sits over every photo so stock imagery stays consistent with
+the palette. If your own photography is already colour-matched, remove the
+`.split-media.has-photo::after` and `.card-media::after` rules from
+`assets/css/style.css`.
 
 ## Local preview
 
