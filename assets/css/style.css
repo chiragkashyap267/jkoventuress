@@ -59,7 +59,10 @@ body {
   overflow-x: hidden;
 }
 
-img, svg { max-width: 100%; display: block; }
+/* height:auto is load-bearing — every <img> carries width/height attributes for
+   layout stability, and without it a shrunk width keeps the attribute height
+   and the picture is squashed. */
+img, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
@@ -581,6 +584,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: 0;
 }
 .split-media::before { z-index: 2; pointer-events: none; }
@@ -602,10 +606,15 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   overflow: hidden;
   background: var(--champagne);
 }
+/* absolutely positioned rather than height:100%, so the image never depends on
+   a percentage height resolving against the aspect-ratio box */
 .card-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform .7s var(--ease);
 }
 .card-media::after {
@@ -616,6 +625,14 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   pointer-events: none;
 }
 .card:hover .card-media img { transform: scale(1.045); }
+
+/* Fallback for engines without aspect-ratio: without a height these boxes
+   collapse and the absolutely positioned image disappears. Padding keeps the
+   same proportions (3.4/4 and 10/16). */
+@supports not (aspect-ratio: 1 / 1) {
+  .split-media { height: 0; padding-top: 85%; }
+  .card-media  { height: 0; padding-top: 62.5%; }
+}
 
 /* ---------- process strip ---------- */
 
