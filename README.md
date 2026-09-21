@@ -56,6 +56,22 @@ the message is not authenticated. The fix is to send over authenticated SMTP
 instead — create the mailbox in Hostinger (Emails → Create), then use PHPMailer
 with those SMTP credentials in place of the `mail()` call.
 
+## Brand colours and the logo
+
+Every colour on the site is sampled from the logo artwork — the page ground is
+the logo's own background (`#c5b2a4`) so the emblem blends into the hero with
+no visible edge, and gold accents use the artwork's ramp (`#784817` through
+`#dda25e` to `#f8dbb1`).
+
+All of it lives in the `:root` block at the top of `assets/css/style.css`.
+There are two metal gradients: `--metal` fills (buttons, rules) and
+`--metal-text` is the same metal shifted darker for type, because flat gold
+text has none of the logo's bevel to separate it from a mid-tone background.
+
+The hero logo animates with three slow loops — a float, a light sweep across
+the metal, and a breathing glow. All of it stops under
+`prefers-reduced-motion`. See `.hero-logo` in the stylesheet.
+
 ## Photography
 
 The site ships with twelve stock photographs in `assets/img/photos/`, all under

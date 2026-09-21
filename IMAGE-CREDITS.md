@@ -1,3 +1,26 @@
+# Image credits
+
+## Brand assets
+
+These are the client's own logo, not stock, and are generated from the supplied
+artwork:
+
+| File | Purpose |
+|---|---|
+| `assets/img/logo-full.jpg` | The complete lockup, shown in the home page hero |
+| `assets/img/logo-mark.png` | Emblem only, used in the header and footer. Its edges are feathered in the PNG so it sits on any surface without showing a box |
+| `assets/img/favicon.ico` | Browser tab icon (16/32/48px) |
+| `assets/img/favicon-32.png` | Modern browser tab icon |
+| `assets/img/apple-touch-icon.png` | Home-screen icon on iOS |
+
+The site palette is sampled directly from that artwork: ground `#c5b2a4`, gold
+ramp `#784817` → `#a0712b` → `#dda25e` → `#f8dbb1`. Those values are the
+`:root` tokens in `assets/css/style.css`; change them there and the whole site
+follows.
+
+To regenerate these from new artwork, the crops are: emblem = a 1220×1220
+square centred at (800, 614) in the 1600×1600 original.
+
 # Photography credits
 
 All photographs in `assets/img/photos/` are stock images published under

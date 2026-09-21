@@ -3,36 +3,59 @@
    Base: warm white | Accents: gold + bronze
    ========================================================================== */
 
-:root {
-  /* surfaces */
-  --white:       #ffffff;
-  --ivory:       #fdfbf7;
-  --champagne:   #f6efe4;
-  --sand:        #efe6d8;
+/* Palette sampled directly from the brand logo artwork:
+   ground #c5b2a4, gold ramp #784817 -> #dda25e -> #f8dbb1. */
 
-  /* metals */
-  --gold:        #c9a227;
-  --gold-light:  #e8cd8b;
-  --gold-pale:   #f0e0b6;
-  --bronze:      #a97142;
-  --bronze-deep: #8c6239;
-  --bronze-dark: #6b4b2a;
+:root {
+  /* surfaces — the logo ground and lighter tints of the same hue */
+  --base:        #c5b2a4;   /* exact logo background */
+  --base-soft:   #cdbcaf;
+  --surface:     #e4dad1;
+  --surface-hi:  #f1eae4;
+  --white:       #faf6f2;
+
+  /* legacy aliases, kept so existing rules keep resolving */
+  --ivory:       var(--base);
+  --champagne:   var(--surface);
+  --sand:        var(--base-soft);
+
+  /* metals — every stop lifted from the artwork */
+  --gold-deep:   #784817;
+  --gold-shadow: #a0712b;
+  --gold:        #c08a3d;
+  --gold-mid:    #dda25e;
+  --gold-light:  #e7bc87;
+  --gold-hi:     #f8dbb1;
+  --gold-pale:   #f0dcc0;
+  --bronze:      #a0712b;
+  --bronze-deep: #8a551d;
+  --bronze-dark: #784817;
 
   /* type */
-  --ink:         #1c1917;
-  --ink-soft:    #3d3630;
-  --muted:       #6f6357;
-  --muted-light: #938878;
+  --ink:         #2a2119;
+  --ink-soft:    #45372a;
+  --muted:       #5d4d3f;
+  --muted-light: #7a6857;
 
   /* lines + shadow */
-  --line:        rgba(169, 113, 66, .18);
-  --line-soft:   rgba(169, 113, 66, .10);
-  --shadow-sm:   0 2px 10px -4px rgba(107, 75, 42, .18);
-  --shadow-md:   0 14px 38px -20px rgba(107, 75, 42, .38);
-  --shadow-lg:   0 30px 70px -34px rgba(107, 75, 42, .45);
+  --line:        rgba(120, 72, 23, .26);
+  --line-soft:   rgba(120, 72, 23, .14);
+  --shadow-sm:   0 2px 10px -4px rgba(74, 44, 14, .22);
+  --shadow-md:   0 14px 38px -20px rgba(74, 44, 14, .42);
+  --shadow-lg:   0 30px 70px -34px rgba(74, 44, 14, .5);
 
-  --metal:       linear-gradient(120deg, var(--bronze-deep) 0%, var(--gold) 45%, var(--bronze) 100%);
-  --rule:        linear-gradient(90deg, transparent, var(--gold-light), var(--bronze), var(--gold-light), transparent);
+  /* the logo's bevelled metal, as a gradient: dark edge -> face -> highlight */
+  --metal: linear-gradient(100deg,
+            #784817 0%, #a0712b 13%, #c98f3c 26%,
+            #dda25e 38%, #f8dbb1 50%, #e7bc87 60%,
+            #dda25e 72%, #a0712b 88%, #784817 100%);
+  --rule:  linear-gradient(90deg, transparent, var(--gold-mid), var(--gold-hi), var(--gold-mid), transparent);
+
+  /* Same metal, shifted darker. Flat gold text has none of the logo's bevel to
+     separate it from a mid-tone background, so text uses this ramp. */
+  --metal-text: linear-gradient(100deg,
+            #6b3f12 0%, #8a551d 16%, #b9812f 34%,
+            #e0ad6b 50%, #b9812f 66%, #8a551d 84%, #6b3f12 100%);
 
   --serif:       "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:        "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -48,7 +71,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--ivory);
+  background: var(--base);
   color: var(--ink);
   font-family: var(--sans);
   font-weight: 300;
@@ -88,10 +111,12 @@ strong { font-weight: 500; color: var(--ink); }
 
 em.metal, .metal-text {
   font-style: italic;
-  background: var(--metal);
+  background: var(--metal-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* drop-shadow applies to the clipped glyphs, standing in for the logo's bevel */
+  filter: drop-shadow(0 1px 0 rgba(70, 40, 12, .28));
 }
 
 ::selection { background: var(--gold-pale); color: var(--ink); }
@@ -102,8 +127,8 @@ em.metal, .metal-text {
 .wrap-narrow { width: min(820px, 100% - 48px); margin-inline: auto; }
 
 section { padding-block: clamp(64px, 9vw, 112px); }
-.section-tint { background: linear-gradient(180deg, var(--white) 0%, var(--champagne) 100%); }
-.section-white { background: var(--white); }
+.section-tint  { background: linear-gradient(180deg, var(--base-soft) 0%, var(--base) 100%); }
+.section-white { background: var(--surface-hi); }
 
 /* ---------- shared bits ---------- */
 
@@ -180,7 +205,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .btn-ghost:hover {
   border-color: var(--gold);
   color: var(--bronze-dark);
-  background: rgba(240, 224, 182, .28);
+  background: rgba(240, 220, 192, .45);
 }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -192,13 +217,13 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(253, 251, 247, .88);
+  background: rgba(241, 234, 228, .90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-soft);
   transition: box-shadow .3s var(--ease), background .3s var(--ease);
 }
-.site-header.scrolled { box-shadow: var(--shadow-sm); background: rgba(253, 251, 247, .96); }
+.site-header.scrolled { box-shadow: var(--shadow-sm); background: rgba(241, 234, 228, .97); }
 
 .header-inner {
   display: flex;
@@ -212,20 +237,17 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .brand { display: flex; align-items: center; gap: 13px; }
 .brand:hover { color: inherit; }
 
-.brand-mark { position: relative; width: 46px; height: 46px; flex: none; }
-.brand-mark svg { width: 100%; height: 100%; }
-.brand-mark b {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -.01em;
-  padding-bottom: 2px;
-  background: var(--metal);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* the real logo emblem; its edges are feathered in the PNG so it sits on any
+   of the warm surfaces without showing a box */
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  flex: none;
+}
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-text { display: flex; flex-direction: column; line-height: 1; }
@@ -240,8 +262,11 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   font-size: 9px;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: var(--bronze);
   margin-top: 5px;
+  background: var(--metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* nav */
@@ -305,9 +330,9 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: relative;
   padding-block: clamp(70px, 11vw, 132px);
   background:
-    radial-gradient(120% 86% at 50% -14%, rgba(232, 205, 139, .28) 0%, rgba(232, 205, 139, 0) 62%),
-    radial-gradient(84% 66% at 92% 108%, rgba(169, 113, 66, .16) 0%, rgba(169, 113, 66, 0) 60%),
-    linear-gradient(180deg, var(--white) 0%, var(--ivory) 100%);
+    radial-gradient(120% 86% at 50% -14%, rgba(248, 219, 177, .34) 0%, rgba(248, 219, 177, 0) 60%),
+    radial-gradient(90% 70% at 88% 112%, rgba(120, 72, 23, .12) 0%, rgba(120, 72, 23, 0) 62%),
+    var(--base);
   overflow: hidden;
 }
 .hero::after {
@@ -328,73 +353,73 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .hero .lede { max-width: 52ch; }
 .hero .btn-row { margin-top: 34px; }
 
-/* emblem */
-.emblem {
+/* --- hero logo (motion) ---------------------------------------------------
+   The artwork is a square JPEG, so a radial mask feathers its edges into the
+   hero ground (which is the logo's own background colour). Motion is three
+   slow, independent loops: a float, a light sweep across the metal, and a
+   breathing glow behind it. */
+
+.hero-logo {
   position: relative;
-  aspect-ratio: 1;
-  width: min(400px, 100%);
+  width: min(480px, 100%);
   margin-inline: auto;
-  display: grid;
-  place-items: center;
-}
-.emblem::before {
-  content: "";
-  position: absolute; inset: 6%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 34% 28%, #fff 0%, var(--champagne) 52%, var(--sand) 100%);
-  box-shadow: var(--shadow-lg), inset 0 0 60px rgba(255, 255, 255, .9);
-}
-.emblem > svg {
-  position: relative;
-  width: 84%;
-  animation: spin 46s linear infinite;
-}
-.emblem-type {
-  position: absolute;
-  text-align: center;
-  z-index: 2;
+  aspect-ratio: 1;
   isolation: isolate;
 }
-/* soft wash so the globe wireframe does not cut through the monogram */
-.emblem-type::before {
+
+.hero-logo::before {                 /* warm glow behind the emblem */
   content: "";
   position: absolute;
-  inset: -26% -18%;
+  inset: 4%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%,
+                rgba(248, 219, 177, .55) 0%,
+                rgba(221, 162, 94, .22) 42%,
+                rgba(221, 162, 94, 0) 70%);
+  filter: blur(6px);
+  animation: logo-glow 6.5s ease-in-out infinite;
   z-index: -1;
-  background: radial-gradient(ellipse at center,
-    rgba(253, 251, 247, .97) 0%,
-    rgba(253, 251, 247, .92) 40%,
-    rgba(253, 251, 247, .55) 64%,
-    rgba(253, 251, 247, 0) 78%);
-}
-.emblem-type .mono {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 8vw, 4.4rem);
-  font-weight: 600;
-  line-height: 1;
-  background: var(--metal);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.emblem-type .word {
-  font-size: clamp(11px, 1.6vw, 14px);
-  letter-spacing: .44em;
-  text-transform: uppercase;
-  color: var(--bronze-deep);
-  margin-top: 10px;
-  padding-left: .44em;
-}
-.emblem-type .tag {
-  font-size: 10px;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  color: var(--bronze);
-  margin-top: 12px;
-  padding-left: .34em;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+.hero-logo .art,
+.hero-logo .sweep {
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,.65) 72%, transparent 80%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,.65) 72%, transparent 80%);
+}
+
+.hero-logo .art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: logo-float 7s ease-in-out infinite;
+}
+
+.hero-logo .sweep {                  /* light travelling across the metal */
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(104deg,
+                transparent 38%,
+                rgba(255, 250, 238, .58) 50%,
+                transparent 62%);
+  background-size: 260% 100%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  animation: logo-sweep 6s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-10px) scale(1.012); }
+}
+@keyframes logo-glow {
+  0%, 100% { opacity: .55; transform: scale(.97); }
+  50%      { opacity: 1;   transform: scale(1.03); }
+}
+@keyframes logo-sweep {
+  0%        { background-position: -60% 0; }
+  55%, 100% { background-position: 160% 0; }
+}
 
 /* ---------- page hero (inner pages) ---------- */
 
@@ -402,8 +427,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   padding-block: clamp(56px, 8vw, 92px);
   text-align: center;
   background:
-    radial-gradient(110% 90% at 50% -20%, rgba(232, 205, 139, .26) 0%, rgba(232, 205, 139, 0) 60%),
-    linear-gradient(180deg, var(--white) 0%, var(--ivory) 100%);
+    radial-gradient(110% 92% at 50% -20%, rgba(248, 219, 177, .32) 0%, rgba(248, 219, 177, 0) 58%),
+    linear-gradient(180deg, var(--base-soft) 0%, var(--base) 100%);
   border-bottom: 1px solid var(--line-soft);
 }
 .page-hero h1 { margin-bottom: 16px; }
@@ -468,7 +493,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 }
 .card-icon i {
   font-style: normal;
-  background: var(--metal);
+  background: var(--metal-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -480,7 +505,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   font-family: var(--serif);
   font-size: 2.6rem;
   line-height: 1;
-  background: var(--metal);
+  background: var(--metal-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -594,7 +619,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(150deg, rgba(201, 162, 39, .12) 0%, rgba(140, 98, 57, .15) 100%);
+  background: linear-gradient(150deg, rgba(221, 162, 94, .10) 0%, rgba(120, 72, 23, .14) 100%);
   pointer-events: none;
 }
 
@@ -621,7 +646,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(201, 162, 39, .10), rgba(140, 98, 57, .13));
+  background: linear-gradient(160deg, rgba(221, 162, 94, .09), rgba(120, 72, 23, .12));
   pointer-events: none;
 }
 .card:hover .card-media img { transform: scale(1.045); }
@@ -632,6 +657,10 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 @supports not (aspect-ratio: 1 / 1) {
   .split-media { height: 0; padding-top: 85%; }
   .card-media  { height: 0; padding-top: 62.5%; }
+
+  @media (max-width: 900px) {
+    .split-media, .card-media { padding-top: 83.333%; }   /* 1000/1200 */
+  }
 }
 
 /* ---------- process strip ---------- */
@@ -678,7 +707,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   font-size: 2.1rem;
   font-weight: 500;
   line-height: 1;
-  background: var(--metal);
+  background: var(--metal-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -710,8 +739,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: relative;
   text-align: center;
   background:
-    radial-gradient(90% 120% at 50% 0%, rgba(232, 205, 139, .3) 0%, rgba(232, 205, 139, 0) 64%),
-    linear-gradient(180deg, var(--champagne) 0%, var(--white) 100%);
+    radial-gradient(90% 120% at 50% 0%, rgba(248, 219, 177, .36) 0%, rgba(248, 219, 177, 0) 62%),
+    linear-gradient(180deg, var(--base) 0%, var(--surface) 100%);
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
 }
@@ -746,7 +775,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(232, 205, 139, .28);
+  box-shadow: 0 0 0 3px rgba(221, 162, 94, .32);
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted-light); }
 
@@ -797,7 +826,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 /* ---------- footer ---------- */
 
 .site-footer {
-  background: linear-gradient(180deg, var(--white) 0%, var(--champagne) 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--base) 100%);
   border-top: 1px solid var(--line);
   padding-top: clamp(52px, 7vw, 76px);
 }
@@ -856,7 +885,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   .hero .lede { margin-inline: auto; }
   .hero .btn-row { justify-content: center; }
   .hero .eyebrow { justify-content: center; }
-  .emblem { order: -1; width: min(330px, 78%); }
+  .hero-logo { order: -1; width: min(340px, 80%); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 34px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -888,6 +917,12 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   .split { grid-template-columns: 1fr; }
   .split.reverse .split-media { order: 0; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  /* 6/5 is exactly 1200x1000 - the box matches the image, so nothing is cropped */
+  .split-media { aspect-ratio: 6 / 5; }
+  .card-media  { aspect-ratio: 6 / 5; }
 }
 
 @media (max-width: 680px) {
