@@ -3,59 +3,64 @@
    Base: warm white | Accents: gold + bronze
    ========================================================================== */
 
-/* Palette sampled directly from the brand logo artwork:
-   ground #c5b2a4, gold ramp #784817 -> #dda25e -> #f8dbb1. */
+/* Palette taken from the brand assets:
+   ground #c1ae9f, and the gold bevel sampled from the supplied finish strip -
+   dark edge #663f17, face #daa464, bright edge #eac997, glint #f9e7cf. */
 
 :root {
-  /* surfaces — the logo ground and lighter tints of the same hue */
-  --base:        #c5b2a4;   /* exact logo background */
-  --base-soft:   #cdbcaf;
-  --surface:     #e4dad1;
-  --surface-hi:  #f1eae4;
-  --white:       #faf6f2;
+  /* surfaces - the brand ground and lighter tints on the same hue (26.5deg) */
+  --base:        #c1ae9f;
+  --base-soft:   #cfc0b5;
+  --surface:     #e2d9d2;
+  --surface-hi:  #f0ebe8;
+  --white:       #f8f6f4;
 
   /* legacy aliases, kept so existing rules keep resolving */
   --ivory:       var(--base);
   --champagne:   var(--surface);
   --sand:        var(--base-soft);
 
-  /* metals — every stop lifted from the artwork */
-  --gold-deep:   #784817;
-  --gold-shadow: #a0712b;
-  --gold:        #c08a3d;
-  --gold-mid:    #dda25e;
-  --gold-light:  #e7bc87;
-  --gold-hi:     #f8dbb1;
-  --gold-pale:   #f0dcc0;
-  --bronze:      #a0712b;
-  --bronze-deep: #8a551d;
-  --bronze-dark: #784817;
+  /* gold, straight off the reference strip */
+  --gold-deep:   #663f17;
+  --gold-shadow: #a87645;
+  --gold:        #c8934f;
+  --gold-mid:    #daa464;
+  --gold-light:  #e3af73;
+  --gold-hi:     #eac997;
+  --gold-glint:  #f9e7cf;
+  --gold-pale:   #f2e2cb;
+  --bronze:      #a87645;
+  --bronze-deep: #5f380f;   /* links + eyebrows, 4.77:1 on the ground */
+  --bronze-dark: #663f17;
 
   /* type */
   --ink:         #2a2119;
   --ink-soft:    #45372a;
-  --muted:       #5d4d3f;
-  --muted-light: #7a6857;
+  --muted:       #4d3f33;   /* body copy, 4.74:1 on the ground */
+  --muted-light: #6d5b4a;
 
   /* lines + shadow */
-  --line:        rgba(120, 72, 23, .26);
-  --line-soft:   rgba(120, 72, 23, .14);
-  --shadow-sm:   0 2px 10px -4px rgba(74, 44, 14, .22);
-  --shadow-md:   0 14px 38px -20px rgba(74, 44, 14, .42);
-  --shadow-lg:   0 30px 70px -34px rgba(74, 44, 14, .5);
+  --line:        rgba(102, 63, 23, .28);
+  --line-soft:   rgba(102, 63, 23, .15);
+  --shadow-sm:   0 2px 10px -4px rgba(70, 42, 14, .24);
+  --shadow-md:   0 14px 38px -20px rgba(70, 42, 14, .44);
+  --shadow-lg:   0 30px 70px -34px rgba(70, 42, 14, .52);
 
-  /* the logo's bevelled metal, as a gradient: dark edge -> face -> highlight */
+  /* The bevel as it runs across the reference strip: a hard dark edge, a broad
+     face, then a bright lip and glint. Used for fills. */
   --metal: linear-gradient(100deg,
-            #784817 0%, #a0712b 13%, #c98f3c 26%,
-            #dda25e 38%, #f8dbb1 50%, #e7bc87 60%,
-            #dda25e 72%, #a0712b 88%, #784817 100%);
-  --rule:  linear-gradient(90deg, transparent, var(--gold-mid), var(--gold-hi), var(--gold-mid), transparent);
+            #663f17 0%, #a87645 5%, #d59e5c 13%,
+            #daa464 34%, #dfac6d 56%, #e3af73 76%,
+            #eac997 92%, #f9e7cf 100%);
 
-  /* Same metal, shifted darker. Flat gold text has none of the logo's bevel to
-     separate it from a mid-tone background, so text uses this ramp. */
+  /* Same gold, weighted to the dark half. The face colour (#daa464) sits at
+     1.04:1 against the ground - invisible as text - so type uses this ramp and
+     a drop-shadow in place of the bevel that makes the logo readable. */
   --metal-text: linear-gradient(100deg,
-            #6b3f12 0%, #8a551d 16%, #b9812f 34%,
-            #e0ad6b 50%, #b9812f 66%, #8a551d 84%, #6b3f12 100%);
+            #5c3712 0%, #7d5225 14%, #a06c33 31%,
+            #c8934f 50%, #a06c33 69%, #7d5225 86%, #5c3712 100%);
+
+  --rule:  linear-gradient(90deg, transparent, var(--gold-shadow), var(--gold-mid), var(--gold-shadow), transparent);
 
   --serif:       "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:        "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -116,7 +121,7 @@ em.metal, .metal-text {
   background-clip: text;
   color: transparent;
   /* drop-shadow applies to the clipped glyphs, standing in for the logo's bevel */
-  filter: drop-shadow(0 1px 0 rgba(70, 40, 12, .28));
+  filter: drop-shadow(0 1px 0 rgba(60, 35, 10, .32));
 }
 
 ::selection { background: var(--gold-pale); color: var(--ink); }
@@ -205,7 +210,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .btn-ghost:hover {
   border-color: var(--gold);
   color: var(--bronze-dark);
-  background: rgba(240, 220, 192, .45);
+  background: rgba(242, 226, 203, .5);
 }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -330,8 +335,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: relative;
   padding-block: clamp(70px, 11vw, 132px);
   background:
-    radial-gradient(120% 86% at 50% -14%, rgba(248, 219, 177, .34) 0%, rgba(248, 219, 177, 0) 60%),
-    radial-gradient(90% 70% at 88% 112%, rgba(120, 72, 23, .12) 0%, rgba(120, 72, 23, 0) 62%),
+    radial-gradient(120% 86% at 50% -14%, rgba(249, 231, 207, .38) 0%, rgba(249, 231, 207, 0) 60%),
+    radial-gradient(90% 70% at 88% 112%, rgba(102, 63, 23, .13) 0%, rgba(102, 63, 23, 0) 62%),
     var(--base);
   overflow: hidden;
 }
@@ -373,9 +378,9 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   inset: 4%;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 46%,
-                rgba(248, 219, 177, .55) 0%,
-                rgba(221, 162, 94, .22) 42%,
-                rgba(221, 162, 94, 0) 70%);
+                rgba(249, 231, 207, .6) 0%,
+                rgba(218, 164, 100, .24) 42%,
+                rgba(218, 164, 100, 0) 70%);
   filter: blur(6px);
   animation: logo-glow 6.5s ease-in-out infinite;
   z-index: -1;
@@ -427,7 +432,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   padding-block: clamp(56px, 8vw, 92px);
   text-align: center;
   background:
-    radial-gradient(110% 92% at 50% -20%, rgba(248, 219, 177, .32) 0%, rgba(248, 219, 177, 0) 58%),
+    radial-gradient(110% 92% at 50% -20%, rgba(249, 231, 207, .36) 0%, rgba(249, 231, 207, 0) 58%),
     linear-gradient(180deg, var(--base-soft) 0%, var(--base) 100%);
   border-bottom: 1px solid var(--line-soft);
 }
@@ -619,7 +624,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(150deg, rgba(221, 162, 94, .10) 0%, rgba(120, 72, 23, .14) 100%);
+  background: linear-gradient(150deg, rgba(218, 164, 100, .10) 0%, rgba(102, 63, 23, .14) 100%);
   pointer-events: none;
 }
 
@@ -646,7 +651,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(221, 162, 94, .09), rgba(120, 72, 23, .12));
+  background: linear-gradient(160deg, rgba(218, 164, 100, .09), rgba(102, 63, 23, .13));
   pointer-events: none;
 }
 .card:hover .card-media img { transform: scale(1.045); }
@@ -739,7 +744,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   position: relative;
   text-align: center;
   background:
-    radial-gradient(90% 120% at 50% 0%, rgba(248, 219, 177, .36) 0%, rgba(248, 219, 177, 0) 62%),
+    radial-gradient(90% 120% at 50% 0%, rgba(249, 231, 207, .40) 0%, rgba(249, 231, 207, 0) 62%),
     linear-gradient(180deg, var(--base) 0%, var(--surface) 100%);
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
@@ -775,7 +780,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(221, 162, 94, .32);
+  box-shadow: 0 0 0 3px rgba(218, 164, 100, .36);
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted-light); }
 
