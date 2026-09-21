@@ -28,6 +28,10 @@ RewriteRule ^ /%1 [R=301,L]
 </IfModule>
 
 # --- caching ----------------------------------------------------------------
+# CSS and JS are cached hard, which is only safe because their URLs carry a
+# ?v= stamp (see the <link> and <script> tags). CHANGING style.css OR main.js
+# WITHOUT BUMPING THAT STAMP WILL NOT REACH ANYONE WHO HAS VISITED BEFORE -
+# they keep the old file for a month and get new HTML against stale CSS.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css            "access plus 1 month"
