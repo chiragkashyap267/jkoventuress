@@ -386,6 +386,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   margin-inline: auto;
   aspect-ratio: 1;
   isolation: isolate;
+  animation: logo-float 7s ease-in-out infinite;
 }
 
 .hero-logo::before {                 /* warm glow behind the emblem */
@@ -402,29 +403,33 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   z-index: -1;
 }
 
-.hero-logo .art,
-.hero-logo .sweep {
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,.65) 72%, transparent 80%);
-          mask-image: radial-gradient(circle at 50% 50%, #000 62%, rgba(0,0,0,.65) 72%, transparent 80%);
-}
-
+/* The artwork is a transparent PNG, so it needs no mask of its own. */
 .hero-logo .art {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: logo-float 7s ease-in-out infinite;
 }
 
-.hero-logo .sweep {                  /* light travelling across the metal */
+/* Light travelling across the metal. The logo itself masks the highlight, so
+   the shine follows the globe and lettering instead of a rectangle. */
+.hero-logo .sweep {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(104deg,
                 transparent 38%,
-                rgba(255, 250, 238, .58) 50%,
+                rgba(255, 250, 238, .62) 50%,
                 transparent 62%);
   background-size: 260% 100%;
   background-repeat: no-repeat;
+  -webkit-mask-image: url("../img/logo-full.png");
+          mask-image: url("../img/logo-full.png");
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
   mix-blend-mode: screen;
   animation: logo-sweep 6s ease-in-out infinite;
 }
