@@ -56,6 +56,26 @@ the message is not authenticated. The fix is to send over authenticated SMTP
 instead — create the mailbox in Hostinger (Emails → Create), then use PHPMailer
 with those SMTP credentials in place of the `mail()` call.
 
+## Cache busting — read before changing any asset
+
+`.htaccess` caches CSS and JS for a month and images for a year, so a file
+replaced in place will not reach anyone who has visited before. Every asset
+that gets overwritten therefore carries a `?v=` stamp in the HTML:
+
+```
+assets/css/style.css?v=20261009
+assets/js/main.js?v=20261009
+assets/img/logo-mark.png?v=20261009
+```
+
+**After editing the stylesheet, the script, a logo or a favicon, bump that
+number everywhere** (a find-and-replace across the `.html` files, plus the
+`mask-image` url in `style.css`). HTML itself is served with no cache, so the
+new stamp takes effect on the next page load.
+
+Photos under `assets/img/photos/` are unstamped because they are added rather
+than replaced. If you overwrite one, either give it a stamp or rename it.
+
 ## Brand colours and the logo
 
 Every colour on the site is sampled from the logo artwork — the page ground is

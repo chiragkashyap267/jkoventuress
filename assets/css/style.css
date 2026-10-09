@@ -422,8 +422,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
                 transparent 62%);
   background-size: 260% 100%;
   background-repeat: no-repeat;
-  -webkit-mask-image: url("../img/logo-full.png");
-          mask-image: url("../img/logo-full.png");
+  -webkit-mask-image: url("../img/logo-full.png?v=20261009");
+          mask-image: url("../img/logo-full.png?v=20261009");
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-position: center;

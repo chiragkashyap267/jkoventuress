@@ -28,10 +28,12 @@ RewriteRule ^ /%1 [R=301,L]
 </IfModule>
 
 # --- caching ----------------------------------------------------------------
-# CSS and JS are cached hard, which is only safe because their URLs carry a
-# ?v= stamp (see the <link> and <script> tags). CHANGING style.css OR main.js
-# WITHOUT BUMPING THAT STAMP WILL NOT REACH ANYONE WHO HAS VISITED BEFORE -
-# they keep the old file for a month and get new HTML against stale CSS.
+# Everything here is cached hard, so REPLACING ANY FILE IN PLACE REQUIRES
+# BUMPING ITS ?v= STAMP IN THE HTML - otherwise returning visitors keep the
+# old copy (a month for css/js, a YEAR for images) and never see the change.
+# style.css, main.js, the logo files and the favicons all carry that stamp.
+# Photos in assets/img/photos are unstamped because they are only ever added,
+# never replaced; if you do overwrite one, give it a ?v= too or rename it.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css            "access plus 1 month"
