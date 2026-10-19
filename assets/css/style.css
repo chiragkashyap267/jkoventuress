@@ -256,6 +256,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   display: block;
 }
 .footer-logo { height: 116px; margin-bottom: 18px; }
+.cta-logo { height: 132px; width: auto; display: block; margin: 0 auto 4px; }
 
 /* nav */
 .nav { display: flex; align-items: center; gap: 2px; }
@@ -401,8 +402,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
                 transparent 62%);
   background-size: 260% 100%;
   background-repeat: no-repeat;
-  -webkit-mask-image: url("../img/logo-full.png?v=20261019");
-          mask-image: url("../img/logo-full.png?v=20261019");
+  -webkit-mask-image: url("../img/logo-full.png?v=20261020");
+          mask-image: url("../img/logo-full.png?v=20261020");
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-position: center;
