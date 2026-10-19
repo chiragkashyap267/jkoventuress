@@ -10,7 +10,7 @@ declare(strict_types=1);
  * SETTINGS — update these two lines once the real address exists.
  * ---------------------------------------------------------------------------
  */
-$TO_ADDRESS   = 'hello@jkoventuress.com';  // where enquiries are delivered
+$TO_ADDRESS   = 'info@jkoventuress.com';  // where enquiries are delivered
 $SITE_DOMAIN  = 'jkoventuress.com';        // used to build the envelope sender
 $FROM_ADDRESS = '';                        // leave empty to use noreply@<site domain>
 

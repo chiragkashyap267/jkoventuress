@@ -26,11 +26,11 @@ assets/img/            Logo mark and favicon (SVG)
 
 ## Updating the contact details
 
-The placeholders are `hello@jkoventuress.com`, `+91 00000 00000` and
+The placeholders are `info@jkoventuress.com`, `+91 00000 00000` and
 "Address line one, City, State – PIN".
 
 1. **Email in the footer** appears on every page. Find and replace
-   `hello@jkoventuress.com` across all `.html` files.
+   `info@jkoventuress.com` across all `.html` files.
 2. **Phone, address and business hours** live only in `contact.html`, in the
    "Contact details" card — search for `<div class="k">Phone</div>`.
 3. **Where enquiries are delivered** is `$TO_ADDRESS` at the top of

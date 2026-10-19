@@ -89,7 +89,7 @@
       sent: ['Thank you — your enquiry has been sent. Our team will get back to you shortly.', false],
       missing: ['Please add your name, email and a little detail about the requirement, then try again.', true],
       bademail: ['That email address does not look right. Please check it and resend.', true],
-      error: ['Sorry — the enquiry could not be sent just now. Please email hello@jkoventuress.com directly.', true]
+      error: ['Sorry — the enquiry could not be sent just now. Please email info@jkoventuress.com directly.', true]
     };
 
     var status = new URLSearchParams(window.location.search).get('status');

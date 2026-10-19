@@ -69,6 +69,7 @@
   --serif:       "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:        "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
 
+  --header-h:    112px;
   --wrap:        1180px;
   --radius:      4px;
   --ease:        cubic-bezier(.22, .9, .3, 1);
@@ -239,44 +240,22 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 78px;
+  min-height: var(--header-h);
 }
 
-/* brand lockup */
-.brand { display: flex; align-items: center; gap: 13px; }
+/* brand lockup - the full logo artwork, used on its own with no set type.
+   The lockup is square and its VENTURES line is only ~8% of the height, so the
+   header is taller than usual to keep that line legible. */
+.brand { display: inline-flex; align-items: center; }
 .brand:hover { color: inherit; }
 
-/* the real logo emblem; its edges are feathered in the PNG so it sits on any
-   of the warm surfaces without showing a box */
-.brand-mark {
-  width: 52px;
-  height: 52px;
-  flex: none;
-}
-.brand-mark img {
-  width: 100%;
-  height: 100%;
+.brand-logo {
+  height: 92px;
+  width: auto;
   object-fit: contain;
+  display: block;
 }
-
-.brand-text { display: flex; flex-direction: column; line-height: 1; }
-.brand-name {
-  font-family: var(--serif);
-  font-size: 1.42rem;
-  font-weight: 500;
-  letter-spacing: .01em;
-  color: var(--ink);
-}
-.brand-sub {
-  font-size: 9px;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  margin-top: 5px;
-  background: var(--metal-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+.footer-logo { height: 116px; margin-bottom: 18px; }
 
 /* nav */
 .nav { display: flex; align-items: center; gap: 2px; }
@@ -422,8 +401,8 @@ section { padding-block: clamp(64px, 9vw, 112px); }
                 transparent 62%);
   background-size: 260% 100%;
   background-repeat: no-repeat;
-  -webkit-mask-image: url("../img/logo-full.png?v=20261009");
-          mask-image: url("../img/logo-full.png?v=20261009");
+  -webkit-mask-image: url("../img/logo-full.png?v=20261019");
+          mask-image: url("../img/logo-full.png?v=20261019");
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-position: center;
@@ -874,6 +853,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 .footer-brand .brand { margin-bottom: 18px; }
 .footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
 .footer-links a { color: var(--muted); font-size: .93rem; }
+.footer-address { color: var(--muted); font-size: .93rem; line-height: 1.6; }
 .footer-links a:hover { color: var(--gold); }
 
 .footer-bottom {
@@ -918,10 +898,13 @@ section { padding-block: clamp(64px, 9vw, 112px); }
 }
 
 @media (max-width: 900px) {
+  :root { --header-h: 78px; }
+  .brand-logo { height: 62px; }
+  .footer-logo { height: 96px; }
   .nav-toggle { display: grid; }
   .nav {
     position: fixed;
-    inset: 78px 0 auto;
+    inset: var(--header-h) 0 auto;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -933,7 +916,7 @@ section { padding-block: clamp(64px, 9vw, 112px); }
     opacity: 0;
     pointer-events: none;
     transition: opacity .3s var(--ease), transform .3s var(--ease);
-    max-height: calc(100vh - 78px);
+    max-height: calc(100vh - var(--header-h));
     overflow-y: auto;
   }
   .nav.open { opacity: 1; transform: none; pointer-events: auto; }
@@ -959,7 +942,6 @@ section { padding-block: clamp(64px, 9vw, 112px); }
   .footer-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }
   .btn { padding: 13px 24px; font-size: 11px; }
-  .brand-sub { letter-spacing: .28em; }
   .card { padding: 28px 22px; }
   .card-media { margin: -28px -22px 20px; }
 }
