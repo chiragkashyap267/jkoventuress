@@ -10,7 +10,11 @@ declare(strict_types=1);
  * SETTINGS — update these two lines once the real address exists.
  * ---------------------------------------------------------------------------
  */
-$TO_ADDRESS   = 'info@jkoventuress.com';  // where enquiries are delivered
+// Delivery address comes from the admin panel, falling back to this if the
+// content store is unavailable - the panel tells the owner that changing the
+// main email changes where enquiries arrive, so it has to actually do that.
+require_once __DIR__ . '/inc/content.php';
+$TO_ADDRESS   = contact_raw('email_primary') ?: 'info@jkoventuress.com';
 $SITE_DOMAIN  = 'jkoventuress.com';        // used to build the envelope sender
 $FROM_ADDRESS = '';                        // leave empty to use noreply@<site domain>
 

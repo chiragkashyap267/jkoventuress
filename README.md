@@ -56,6 +56,55 @@ the message is not authenticated. The fix is to send over authenticated SMTP
 instead — create the mailbox in Hostinger (Emails → Create), then use PHPMailer
 with those SMTP credentials in place of the `mail()` call.
 
+## Admin panel
+
+The owner edits content at `/admin`. First visit asks them to set a password;
+it is stored only as a bcrypt hash in `data/admin.json`. If it is lost, delete
+that file and the setup screen comes back. There is no email reset flow on
+purpose — for a single-user panel it is attack surface in exchange for little.
+
+### How it fits with Git deployment
+
+**The panel never writes to a tracked file.** The site deploys from GitHub, so
+anything it edited inside the repo would be destroyed by the next deploy.
+Instead:
+
+| Lives in Git | Written by the panel (git-ignored) |
+|---|---|
+| `*.php` page templates | `data/content.json` — the overrides |
+| `inc/fields.php` — the field manifest and original text | `data/admin.json` — password hash |
+| `assets/img/photos/` — shipped photos | `data/backups/` — a copy per save |
+| | `assets/img/uploads/` — replaced photos |
+
+Both directories are created automatically on first write, so a fresh deploy
+needs no setup. Deploys and panel edits cannot collide.
+
+### How the content layer works
+
+Every editable string is `<?= t('page.key') ?>`. `inc/fields.php` holds the
+**original** text for each key; `data/content.json` holds only what the owner
+has changed. So:
+
+- a missing or corrupt data file renders the site exactly as it shipped
+- clearing a field in the panel restores the original (the override is dropped)
+- `inc/fields.php` is generated from the markup, so defaults cannot drift
+
+`t()` escapes everything, then re-allows only `<br>`, `<em>`, `<strong>` and
+HTML entities. A `<script>` typed into the panel renders as visible text.
+
+### Adding a new editable field
+
+1. Add the key to `inc/fields.php` with its `label`, `page`, `type` and
+   `default` (the current wording).
+2. Replace the text in the page with `<?= t('your.key') ?>`.
+
+The admin form generates itself from the manifest — there is no form to edit.
+
+### Deliberately not editable
+
+Colours, fonts, layout, the logo, navigation and SEO. Those are the brand and
+the parts most easily broken through a text box.
+
 ## Cache busting — read before changing any asset
 
 `.htaccess` caches CSS and JS for a month and images for a year, so a file

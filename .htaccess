@@ -1,23 +1,36 @@
 # J&Ko Ventures — server configuration
 
-# --- protect the enquiry log ------------------------------------------------
+# --- keep private things private --------------------------------------------
+# The content store, the password hash and the PHP includes must never be
+# served directly, whatever anyone types in the address bar.
+RedirectMatch 404 ^/(data|inc)(/|$)
+
 <Files "enquiries.log">
   Require all denied
 </Files>
+<FilesMatch "\.(json|log)$">
+  Require all denied
+</FilesMatch>
 
 # --- default charset --------------------------------------------------------
 AddDefaultCharset UTF-8
 
-# --- drop .html from URLs (/about instead of /about.html) -------------------
+# --- clean URLs -------------------------------------------------------------
 RewriteEngine On
 
-# send /about -> /about.html internally
+# /about -> about.php
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.php [L]
 
-# redirect a direct /about.html request to the clean /about
-RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+# old .html links keep working
+RewriteCond %{THE_REQUEST} \s/+([A-Za-z0-9_-]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# never expose the .php extension
+RewriteCond %{THE_REQUEST} \s/+([A-Za-z0-9_-]+)\.php[\s?] [NC]
+RewriteCond %{REQUEST_URI} !^/(admin|form-handler)
 RewriteRule ^ /%1 [R=301,L]
 
 # --- compression ------------------------------------------------------------
@@ -29,11 +42,10 @@ RewriteRule ^ /%1 [R=301,L]
 
 # --- caching ----------------------------------------------------------------
 # Everything here is cached hard, so REPLACING ANY FILE IN PLACE REQUIRES
-# BUMPING ITS ?v= STAMP IN THE HTML - otherwise returning visitors keep the
+# BUMPING ASSET_V in inc/content.php - otherwise returning visitors keep the
 # old copy (a month for css/js, a YEAR for images) and never see the change.
-# style.css, main.js, the logo files and the favicons all carry that stamp.
-# Photos in assets/img/photos are unstamped because they are only ever added,
-# never replaced; if you do overwrite one, give it a ?v= too or rename it.
+# Photos uploaded through the admin panel get a fresh filename each time, so
+# they are not affected.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css            "access plus 1 month"
@@ -50,6 +62,15 @@ RewriteRule ^ /%1 [R=301,L]
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set X-Frame-Options "SAMEORIGIN"
+  # the admin panel should never be indexed or framed
+  <If "%{REQUEST_URI} =~ m#^/admin#">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
 </IfModule>
 
-ErrorDocument 404 /404.html
+# --- uploaded files are data, never code ------------------------------------
+<Directory "assets/img/uploads">
+  php_flag engine off
+</Directory>
+
+ErrorDocument 404 /404.php

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/inc/content.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +6,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Our Approach — How We Build Gifting Programmes | J&amp;Ko Ventures</title>
 <meta name="description" content="Understand, curate, customise, brand, pack, deliver — our end-to-end corporate gifting process, with quality standards, personalisation options and sustainable gifting choices." />
-<link rel="icon" href="assets/img/favicon.ico?v=20261020" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=20261020" />
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20261020" />
+<link rel="icon" href="/assets/img/favicon.ico<?= '?v=' . ASSET_V ?>" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png<?= '?v=' . ASSET_V ?>" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png<?= '?v=' . ASSET_V ?>" />
 <meta name="theme-color" content="#c1ae9f" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/style.css?v=20261020" />
+<link rel="stylesheet" href="/assets/css/style.css<?= '?v=' . ASSET_V ?>" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html" aria-label="J&amp;Ko Ventures — home">
-      <img class="brand-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+    <a class="brand" href="/" aria-label="J&amp;Ko Ventures — home">
+      <img class="brand-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
     </a>
 
     <nav class="nav" id="primary-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Gifting Solutions</a>
-      <a href="occasions.html">Occasions</a>
-      <a href="approach.html" aria-current="page">Our Approach</a>
-      <a href="why-us.html">Why Us</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Gifting Solutions</a>
+      <a href="/occasions">Occasions</a>
+      <a href="/approach" aria-current="page">Our Approach</a>
+      <a href="/why-us">Why Us</a>
+      <a href="/contact">Contact</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="contact.html">Enquire</a>
+    <a class="btn btn-primary header-cta" href="/contact">Enquire</a>
 
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav"><i></i></button>
   </div>
@@ -41,13 +42,10 @@
 <main>
 <section class="page-hero">
     <div class="wrap">
-      <p class="crumbs"><a href="index.html">Home</a><i>&rsaquo;</i>Our Approach</p>
-      <span class="eyebrow center">Our Approach</span>
-      <h1>Great gifting starts<br />with <em class="metal">understanding</em></h1>
-      <p class="lede">
-        We work with businesses to create gifting concepts that align with their brand image,
-        occasion, audience and budget — so that every gift feels intentional.
-      </p>
+      <p class="crumbs"><a href="/">Home</a><i>&rsaquo;</i>Our Approach</p>
+      <span class="eyebrow center"><?= t('approach.label1') ?></span>
+      <h1><?= t('approach.h1') ?></h1>
+      <p class="lede"><?= t('approach.lede') ?></p>
     </div>
   </section>
 
@@ -106,8 +104,8 @@
   <section class="section-tint">
     <div class="wrap split">
       <div class="reveal">
-        <span class="eyebrow">Brand Alignment</span>
-        <h2>Corporate gifting that reflects your brand</h2>
+        <span class="eyebrow"><?= t('approach.label2') ?></span>
+        <h2><?= t('approach.heading1') ?></h2>
         <p style="color:var(--muted)">
           Your corporate gift represents your organisation. That is why we pay attention to
           every detail — from the quality of the product and logo placement to packaging,
@@ -120,7 +118,7 @@
         </p>
       </div>
       <div class="split-media has-photo reveal d1">
-        <img src="assets/img/photos/branded-stationery.jpg" alt="An open branded notebook and pen laid out on a desk" width="1200" height="1000" loading="lazy" decoding="async" />
+        <img src="/<?= img_src('branded-stationery', 'assets/img/photos/branded-stationery.jpg') ?>" alt="An open branded notebook and pen laid out on a desk" width="1200" height="1000" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -128,11 +126,11 @@
   <section class="section-white">
     <div class="wrap split reverse">
       <div class="split-media has-photo reveal">
-        <img src="assets/img/photos/packaging-quality.jpg" alt="A clean kraft gift box photographed against a plain background" width="1200" height="1000" loading="lazy" decoding="async" />
+        <img src="/<?= img_src('packaging-quality', 'assets/img/photos/packaging-quality.jpg') ?>" alt="A clean kraft gift box photographed against a plain background" width="1200" height="1000" loading="lazy" decoding="async" />
       </div>
       <div class="reveal d1">
-        <span class="eyebrow">Quality</span>
-        <h2>Quality is at the heart of what we do</h2>
+        <span class="eyebrow"><?= t('approach.label3') ?></span>
+        <h2><?= t('approach.heading2') ?></h2>
         <p style="color:var(--muted)">
           A corporate gift should reflect the quality of the company giving it. Our focus is on
           sourcing products that offer a balance of quality, functionality, presentation and
@@ -156,8 +154,8 @@
   <section class="section-tint">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow center">Personalisation</span>
-        <h2>Personalisation that makes a difference</h2>
+        <span class="eyebrow center"><?= t('approach.label4') ?></span>
+        <h2><?= t('approach.heading3') ?></h2>
         <p>
           A personalised gift creates a stronger emotional connection. Our objective is to make
           every recipient feel that the gift was thoughtfully selected for them, rather than
@@ -199,11 +197,11 @@
   <section class="section-white">
     <div class="wrap split">
       <div class="split-media has-photo reveal">
-        <img src="assets/img/photos/sustainable-packaging.jpg" alt="A cardboard gift box printed with a recycling symbol" width="1200" height="1000" loading="lazy" decoding="async" />
+        <img src="/<?= img_src('sustainable-packaging', 'assets/img/photos/sustainable-packaging.jpg') ?>" alt="A cardboard gift box printed with a recycling symbol" width="1200" height="1000" loading="lazy" decoding="async" />
       </div>
       <div class="reveal d1">
-        <span class="eyebrow">Sustainable Gifting</span>
-        <h2>Responsible choices, wherever possible</h2>
+        <span class="eyebrow"><?= t('approach.label5') ?></span>
+        <h2><?= t('approach.heading4') ?></h2>
         <p style="color:var(--muted)">
           As businesses become increasingly conscious of their environmental impact, gifting is
           also evolving. We are committed to promoting responsible and sustainable gifting
@@ -220,15 +218,15 @@
 
   <section class="cta-band">
     <div class="wrap-narrow reveal">
-      <span class="eyebrow center">Start With a Conversation</span>
-      <h2>Tell us the brief, we will handle the rest</h2>
+      <span class="eyebrow center"><?= t('approach.label6') ?></span>
+      <h2><?= t('approach.heading5') ?></h2>
       <p>
         Share your occasion, audience and budget. We will come back with curated options,
         branding suggestions and clear timelines.
       </p>
       <div class="btn-row center">
-        <a class="btn btn-primary" href="contact.html">Share Your Brief</a>
-        <a class="btn btn-ghost" href="why-us.html">Why Choose Us</a>
+        <a class="btn btn-primary" href="/contact">Share Your Brief</a>
+        <a class="btn btn-ghost" href="/why-us">Why Choose Us</a>
       </div>
     </div>
   </section>
@@ -238,8 +236,8 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="index.html">
-        <img class="brand-logo footer-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+      <a class="brand" href="/">
+        <img class="brand-logo footer-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
       </a>
       <p>
         Corporate gifting, customised gifts, branded merchandise and premium gift solutions &mdash;
@@ -250,36 +248,36 @@
     <div>
       <h4>Explore</h4>
       <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Gifting Solutions</a></li>
-        <li><a href="occasions.html">Occasions</a></li>
-        <li><a href="approach.html">Our Approach</a></li>
-        <li><a href="why-us.html">Why Choose Us</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Gifting Solutions</a></li>
+        <li><a href="/occasions">Occasions</a></li>
+        <li><a href="/approach">Our Approach</a></li>
+        <li><a href="/why-us">Why Choose Us</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Popular</h4>
       <ul class="footer-links">
-        <li><a href="services.html#hampers">Gift Hampers</a></li>
-        <li><a href="services.html#welcome-kits">Welcome Kits</a></li>
-        <li><a href="services.html#lanyards">Lanyards &amp; ID Cards</a></li>
-        <li><a href="services.html#trophies">Trophies &amp; Awards</a></li>
-        <li><a href="services.html#name-plates">Name Plates</a></li>
+        <li><a href="/services#hampers">Gift Hampers</a></li>
+        <li><a href="/services#welcome-kits">Welcome Kits</a></li>
+        <li><a href="/services#lanyards">Lanyards &amp; ID Cards</a></li>
+        <li><a href="/services#trophies">Trophies &amp; Awards</a></li>
+        <li><a href="/services#name-plates">Name Plates</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Get in Touch</h4>
       <ul class="footer-links">
-        <li><a href="mailto:info@jkoventuress.com">info@jkoventuress.com</a></li>
-        <li><a href="tel:+919654272273">+91 96542 72273</a></li>
-        <li><a href="tel:+919319916172">+91 93199 16172</a></li>
+        <li><a href="mailto:<?= contact('email_primary') ?>"><?= contact('email_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_primary')) ?>"><?= contact('phone_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_secondary')) ?>"><?= contact('phone_secondary') ?></a></li>
         <li class="footer-address">
-          B-227, Basement, Greater Kailash 1<br />
-          New Delhi &ndash; 110048
+          <?= contact('address_line1') ?><br />
+          <?= contact('address_line2') ?>
         </li>
-        <li><a href="contact.html">Send an Enquiry</a></li>
+        <li><a href="/contact">Send an Enquiry</a></li>
       </ul>
     </div>
   </div>
@@ -290,6 +288,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20261020"></script>
+<script src="/assets/js/main.js<?= '?v=' . ASSET_V ?>"></script>
 </body>
 </html>

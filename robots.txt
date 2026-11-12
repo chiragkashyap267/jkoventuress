@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /inc/
+Disallow: /data/
 
 Sitemap: https://jkoventuress.com/sitemap.xml

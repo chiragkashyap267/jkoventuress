@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/inc/content.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +6,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Occasions &amp; Industries — Corporate Gifting All Year | J&amp;Ko Ventures</title>
 <meta name="description" content="Corporate gifting for onboarding, appreciation, festivals, conferences, product launches, milestones, awards and customer loyalty — for businesses across every industry." />
-<link rel="icon" href="assets/img/favicon.ico?v=20261020" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=20261020" />
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20261020" />
+<link rel="icon" href="/assets/img/favicon.ico<?= '?v=' . ASSET_V ?>" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png<?= '?v=' . ASSET_V ?>" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png<?= '?v=' . ASSET_V ?>" />
 <meta name="theme-color" content="#c1ae9f" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/style.css?v=20261020" />
+<link rel="stylesheet" href="/assets/css/style.css<?= '?v=' . ASSET_V ?>" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html" aria-label="J&amp;Ko Ventures — home">
-      <img class="brand-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+    <a class="brand" href="/" aria-label="J&amp;Ko Ventures — home">
+      <img class="brand-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
     </a>
 
     <nav class="nav" id="primary-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Gifting Solutions</a>
-      <a href="occasions.html" aria-current="page">Occasions</a>
-      <a href="approach.html">Our Approach</a>
-      <a href="why-us.html">Why Us</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Gifting Solutions</a>
+      <a href="/occasions" aria-current="page">Occasions</a>
+      <a href="/approach">Our Approach</a>
+      <a href="/why-us">Why Us</a>
+      <a href="/contact">Contact</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="contact.html">Enquire</a>
+    <a class="btn btn-primary header-cta" href="/contact">Enquire</a>
 
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav"><i></i></button>
   </div>
@@ -41,22 +42,18 @@
 <main>
 <section class="page-hero">
     <div class="wrap">
-      <p class="crumbs"><a href="index.html">Home</a><i>&rsaquo;</i>Occasions</p>
-      <span class="eyebrow center">Designed for Every Occasion</span>
-      <h1>Gifting is not limited<br />to <em class="metal">festivals</em></h1>
-      <p class="lede">
-        Businesses have countless opportunities to appreciate and connect with their people and
-        partners throughout the year. Whatever the occasion, we help you turn it into a
-        memorable experience.
-      </p>
+      <p class="crumbs"><a href="/">Home</a><i>&rsaquo;</i>Occasions</p>
+      <span class="eyebrow center"><?= t('occasions.label1') ?></span>
+      <h1><?= t('occasions.h1') ?></h1>
+      <p class="lede"><?= t('occasions.lede') ?></p>
     </div>
   </section>
 
   <section class="section-white">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow center">Your People</span>
-        <h2>Moments that matter inside the organisation</h2>
+        <span class="eyebrow center"><?= t('occasions.label2') ?></span>
+        <h2><?= t('occasions.heading1') ?></h2>
       </div>
       <div class="grid grid-3">
         <article class="card reveal">
@@ -96,8 +93,8 @@
   <section class="section-tint">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow center">Your Clients &amp; Partners</span>
-        <h2>Moments that strengthen relationships outside it</h2>
+        <span class="eyebrow center"><?= t('occasions.label3') ?></span>
+        <h2><?= t('occasions.heading2') ?></h2>
       </div>
       <div class="grid grid-3">
         <article class="card reveal">
@@ -137,8 +134,8 @@
   <section class="section-white">
     <div class="wrap split">
       <div class="reveal">
-        <span class="eyebrow">Launches &amp; Campaigns</span>
-        <h2>Product launches and promotional kits</h2>
+        <span class="eyebrow"><?= t('occasions.label4') ?></span>
+        <h2><?= t('occasions.heading3') ?></h2>
         <p style="color:var(--muted)">
           A launch kit has one job: to present the product properly the moment the box is
           opened. We build press kits, influencer kits and internal launch sets that arrive
@@ -154,7 +151,7 @@
         </ul>
       </div>
       <div class="split-media has-photo reveal d1">
-        <img src="assets/img/photos/launch-kit.jpg" alt="Hands opening a plain kraft product launch box" width="1200" height="1000" loading="lazy" decoding="async" />
+        <img src="/<?= img_src('launch-kit', 'assets/img/photos/launch-kit.jpg') ?>" alt="Hands opening a plain kraft product launch box" width="1200" height="1000" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -162,8 +159,8 @@
   <section class="section-tint">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow center">Industries We Serve</span>
-        <h2>Flexible solutions for every kind of organisation</h2>
+        <span class="eyebrow center"><?= t('occasions.label5') ?></span>
+        <h2><?= t('occasions.heading4') ?></h2>
         <p>
           Our services support businesses at any scale — from a startup ordering for its first
           team to an organisation managing gifting across multiple locations.
@@ -187,15 +184,15 @@
 
   <section class="cta-band">
     <div class="wrap-narrow reveal">
-      <span class="eyebrow center">Plan Ahead</span>
-      <h2>Have an occasion coming up?</h2>
+      <span class="eyebrow center"><?= t('occasions.label6') ?></span>
+      <h2><?= t('occasions.heading5') ?></h2>
       <p>
         Festive and event gifting works best with lead time. Tell us the date and the numbers,
         and we will build the plan around them.
       </p>
       <div class="btn-row center">
-        <a class="btn btn-primary" href="contact.html">Start Planning</a>
-        <a class="btn btn-ghost" href="services.html">Browse Solutions</a>
+        <a class="btn btn-primary" href="/contact">Start Planning</a>
+        <a class="btn btn-ghost" href="/services">Browse Solutions</a>
       </div>
     </div>
   </section>
@@ -205,8 +202,8 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="index.html">
-        <img class="brand-logo footer-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+      <a class="brand" href="/">
+        <img class="brand-logo footer-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
       </a>
       <p>
         Corporate gifting, customised gifts, branded merchandise and premium gift solutions &mdash;
@@ -217,36 +214,36 @@
     <div>
       <h4>Explore</h4>
       <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Gifting Solutions</a></li>
-        <li><a href="occasions.html">Occasions</a></li>
-        <li><a href="approach.html">Our Approach</a></li>
-        <li><a href="why-us.html">Why Choose Us</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Gifting Solutions</a></li>
+        <li><a href="/occasions">Occasions</a></li>
+        <li><a href="/approach">Our Approach</a></li>
+        <li><a href="/why-us">Why Choose Us</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Popular</h4>
       <ul class="footer-links">
-        <li><a href="services.html#hampers">Gift Hampers</a></li>
-        <li><a href="services.html#welcome-kits">Welcome Kits</a></li>
-        <li><a href="services.html#lanyards">Lanyards &amp; ID Cards</a></li>
-        <li><a href="services.html#trophies">Trophies &amp; Awards</a></li>
-        <li><a href="services.html#name-plates">Name Plates</a></li>
+        <li><a href="/services#hampers">Gift Hampers</a></li>
+        <li><a href="/services#welcome-kits">Welcome Kits</a></li>
+        <li><a href="/services#lanyards">Lanyards &amp; ID Cards</a></li>
+        <li><a href="/services#trophies">Trophies &amp; Awards</a></li>
+        <li><a href="/services#name-plates">Name Plates</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Get in Touch</h4>
       <ul class="footer-links">
-        <li><a href="mailto:info@jkoventuress.com">info@jkoventuress.com</a></li>
-        <li><a href="tel:+919654272273">+91 96542 72273</a></li>
-        <li><a href="tel:+919319916172">+91 93199 16172</a></li>
+        <li><a href="mailto:<?= contact('email_primary') ?>"><?= contact('email_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_primary')) ?>"><?= contact('phone_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_secondary')) ?>"><?= contact('phone_secondary') ?></a></li>
         <li class="footer-address">
-          B-227, Basement, Greater Kailash 1<br />
-          New Delhi &ndash; 110048
+          <?= contact('address_line1') ?><br />
+          <?= contact('address_line2') ?>
         </li>
-        <li><a href="contact.html">Send an Enquiry</a></li>
+        <li><a href="/contact">Send an Enquiry</a></li>
       </ul>
     </div>
   </div>
@@ -257,6 +254,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20261020"></script>
+<script src="/assets/js/main.js<?= '?v=' . ASSET_V ?>"></script>
 </body>
 </html>

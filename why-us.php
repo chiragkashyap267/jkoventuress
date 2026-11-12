@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/inc/content.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +6,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Why Choose Us — A Gifting Partner, Not Just a Supplier | J&amp;Ko Ventures</title>
 <meta name="description" content="One-stop gifting solutions, customised for your brand, quality-focused, creative and contemporary, flexible, reliably fulfilled and personally managed — why businesses work with J&amp;Ko Ventures." />
-<link rel="icon" href="assets/img/favicon.ico?v=20261020" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=20261020" />
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20261020" />
+<link rel="icon" href="/assets/img/favicon.ico<?= '?v=' . ASSET_V ?>" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png<?= '?v=' . ASSET_V ?>" />
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png<?= '?v=' . ASSET_V ?>" />
 <meta name="theme-color" content="#c1ae9f" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/style.css?v=20261020" />
+<link rel="stylesheet" href="/assets/css/style.css<?= '?v=' . ASSET_V ?>" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html" aria-label="J&amp;Ko Ventures — home">
-      <img class="brand-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+    <a class="brand" href="/" aria-label="J&amp;Ko Ventures — home">
+      <img class="brand-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
     </a>
 
     <nav class="nav" id="primary-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Gifting Solutions</a>
-      <a href="occasions.html">Occasions</a>
-      <a href="approach.html">Our Approach</a>
-      <a href="why-us.html" aria-current="page">Why Us</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Gifting Solutions</a>
+      <a href="/occasions">Occasions</a>
+      <a href="/approach">Our Approach</a>
+      <a href="/why-us" aria-current="page">Why Us</a>
+      <a href="/contact">Contact</a>
     </nav>
 
-    <a class="btn btn-primary header-cta" href="contact.html">Enquire</a>
+    <a class="btn btn-primary header-cta" href="/contact">Enquire</a>
 
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav"><i></i></button>
   </div>
@@ -41,13 +42,10 @@
 <main>
 <section class="page-hero">
     <div class="wrap">
-      <p class="crumbs"><a href="index.html">Home</a><i>&rsaquo;</i>Why Us</p>
-      <span class="eyebrow center">Why Choose Us</span>
-      <h1>More than a supplier.<br />A gifting <em class="metal">partner</em>.</h1>
-      <p class="lede">
-        We aspire to build long-term relationships with our clients by becoming more than just a
-        gifting supplier — we want to be their trusted gifting partner.
-      </p>
+      <p class="crumbs"><a href="/">Home</a><i>&rsaquo;</i>Why Us</p>
+      <span class="eyebrow center"><?= t('why-us.label1') ?></span>
+      <h1><?= t('why-us.h1') ?></h1>
+      <p class="lede"><?= t('why-us.lede') ?></p>
     </div>
   </section>
 
@@ -125,8 +123,8 @@
   <section class="section-tint">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow center">Vision &amp; Mission</span>
-        <h2>What we are building towards</h2>
+        <span class="eyebrow center"><?= t('why-us.label2') ?></span>
+        <h2><?= t('why-us.heading1') ?></h2>
       </div>
       <div class="grid grid-2">
         <article class="card reveal">
@@ -160,8 +158,8 @@
 
   <section class="section-white quote-band">
     <div class="wrap-narrow reveal">
-      <span class="eyebrow center">More Than a Gift</span>
-      <h2 style="margin-bottom:26px">What a well-chosen gift actually says</h2>
+      <span class="eyebrow center"><?= t('why-us.label3') ?></span>
+      <h2 style="margin-bottom:26px"><?= t('why-us.heading2') ?></h2>
       <p class="lines">
         <span>Thank you.</span>
         <span>We appreciate you.</span>
@@ -179,16 +177,16 @@
 
   <section class="cta-band">
     <div class="wrap-narrow reveal">
-      <span class="eyebrow center">Work With Us</span>
-      <h2>Let&rsquo;s create something meaningful</h2>
+      <span class="eyebrow center"><?= t('why-us.label4') ?></span>
+      <h2><?= t('why-us.heading3') ?></h2>
       <p>
         Whether you are planning your next corporate event, welcoming new employees,
         appreciating your team, strengthening client relationships or preparing for the festive
         season, our team is ready to help.
       </p>
       <div class="btn-row center">
-        <a class="btn btn-primary" href="contact.html">Connect With Us</a>
-        <a class="btn btn-ghost" href="services.html">See Our Solutions</a>
+        <a class="btn btn-primary" href="/contact">Connect With Us</a>
+        <a class="btn btn-ghost" href="/services">See Our Solutions</a>
       </div>
     </div>
   </section>
@@ -198,8 +196,8 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="index.html">
-        <img class="brand-logo footer-logo" src="assets/img/logo-full.png?v=20261020" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
+      <a class="brand" href="/">
+        <img class="brand-logo footer-logo" src="/assets/img/logo-full.png<?= '?v=' . ASSET_V ?>" alt="J&amp;Ko Ventures — Global Vision" width="960" height="960" />
       </a>
       <p>
         Corporate gifting, customised gifts, branded merchandise and premium gift solutions &mdash;
@@ -210,36 +208,36 @@
     <div>
       <h4>Explore</h4>
       <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Gifting Solutions</a></li>
-        <li><a href="occasions.html">Occasions</a></li>
-        <li><a href="approach.html">Our Approach</a></li>
-        <li><a href="why-us.html">Why Choose Us</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Gifting Solutions</a></li>
+        <li><a href="/occasions">Occasions</a></li>
+        <li><a href="/approach">Our Approach</a></li>
+        <li><a href="/why-us">Why Choose Us</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Popular</h4>
       <ul class="footer-links">
-        <li><a href="services.html#hampers">Gift Hampers</a></li>
-        <li><a href="services.html#welcome-kits">Welcome Kits</a></li>
-        <li><a href="services.html#lanyards">Lanyards &amp; ID Cards</a></li>
-        <li><a href="services.html#trophies">Trophies &amp; Awards</a></li>
-        <li><a href="services.html#name-plates">Name Plates</a></li>
+        <li><a href="/services#hampers">Gift Hampers</a></li>
+        <li><a href="/services#welcome-kits">Welcome Kits</a></li>
+        <li><a href="/services#lanyards">Lanyards &amp; ID Cards</a></li>
+        <li><a href="/services#trophies">Trophies &amp; Awards</a></li>
+        <li><a href="/services#name-plates">Name Plates</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Get in Touch</h4>
       <ul class="footer-links">
-        <li><a href="mailto:info@jkoventuress.com">info@jkoventuress.com</a></li>
-        <li><a href="tel:+919654272273">+91 96542 72273</a></li>
-        <li><a href="tel:+919319916172">+91 93199 16172</a></li>
+        <li><a href="mailto:<?= contact('email_primary') ?>"><?= contact('email_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_primary')) ?>"><?= contact('phone_primary') ?></a></li>
+        <li><a href="tel:<?= tel_href(contact_raw('phone_secondary')) ?>"><?= contact('phone_secondary') ?></a></li>
         <li class="footer-address">
-          B-227, Basement, Greater Kailash 1<br />
-          New Delhi &ndash; 110048
+          <?= contact('address_line1') ?><br />
+          <?= contact('address_line2') ?>
         </li>
-        <li><a href="contact.html">Send an Enquiry</a></li>
+        <li><a href="/contact">Send an Enquiry</a></li>
       </ul>
     </div>
   </div>
@@ -250,6 +248,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20261020"></script>
+<script src="/assets/js/main.js<?= '?v=' . ASSET_V ?>"></script>
 </body>
 </html>

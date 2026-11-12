@@ -1,0 +1,210 @@
+/* J&Ko Ventures — admin panel.
+   Deliberately plain: this is a tool, not the brand. It borrows the brand
+   browns so it feels related, and nothing else. */
+
+:root {
+  --brown:  #7f5326;
+  --ink:    #3b2d20;
+  --muted:  #6b5a49;
+  --line:   #ded3c8;
+  --bg:     #f6f2ee;
+  --panel:  #ffffff;
+  --good:   #2f6b43;
+  --bad:    #a33a28;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+a { color: var(--brown); }
+
+/* ---------- top bar ---------- */
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  padding: 12px 24px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.bar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.bar .brand img { display: block; }
+.bar nav { display: flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
+.bar nav a {
+  padding: 7px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+.bar nav a:hover { background: var(--bg); color: var(--ink); }
+.bar nav a.on { background: var(--brown); color: #fff; }
+.bar nav a.out { color: var(--bad); }
+
+/* ---------- layout ---------- */
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 28px 24px 70px; }
+h1 { font-size: 1.6rem; margin: 0 0 6px; }
+h2 { font-size: 1.15rem; margin: 38px 0 6px; }
+.muted { color: var(--muted); margin: 0 0 22px; }
+.note {
+  color: var(--muted);
+  font-size: 13.5px;
+  background: #efe8e0;
+  border-left: 3px solid var(--brown);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin-top: 24px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+}
+
+/* ---------- forms ---------- */
+
+.field { margin-bottom: 20px; }
+.field label { display: block; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; }
+.field input[type="text"],
+.field textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--brown);
+  box-shadow: 0 0 0 3px rgba(127, 83, 38, .14);
+}
+.hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 12.5px;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: 1px solid var(--brown);
+  border-radius: 6px;
+  background: var(--brown);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--brown); }
+.btn.small { padding: 7px 14px; font-size: 13px; }
+
+.linkish {
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--brown);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- messages ---------- */
+
+.flash {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin: 0 0 20px;
+  font-size: 14.5px;
+  border-left: 3px solid;
+}
+.flash.good { background: #e8f1ea; border-color: var(--good); color: #1f4c2f; }
+.flash.bad  { background: #f7e9e6; border-color: var(--bad);  color: #7d2a1c; }
+
+/* ---------- tabs ---------- */
+
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 18px; }
+.tabs a {
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.tabs a.on { background: var(--brown); border-color: var(--brown); color: #fff; }
+
+/* ---------- dashboard ---------- */
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0 10px; }
+.tile { text-decoration: none; color: inherit; display: block; transition: border-color .2s, transform .2s; }
+.tile:hover { border-color: var(--brown); transform: translateY(-2px); }
+.tile h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--brown); }
+.tile p { margin: 0 0 12px; font-size: 13.5px; color: var(--muted); }
+.tag { font-size: 12px; color: var(--muted); background: var(--bg); padding: 3px 9px; border-radius: 999px; }
+
+.backups { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.backups td { padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
+.backups tr:last-child td { border-bottom: 0; }
+.backups .right { text-align: right; }
+
+/* ---------- images ---------- */
+
+.img-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.img-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.img-card .thumb { aspect-ratio: 6 / 5; overflow: hidden; border-radius: 6px; background: var(--bg); }
+.img-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.img-card h3 { margin: 12px 0 2px; font-size: .95rem; }
+.img-card .where { margin: 0 0 10px; font-size: 12.5px; color: var(--muted); }
+.img-card input[type="file"] { width: 100%; font-size: 12.5px; margin-bottom: 8px; }
+.img-card .reset { margin-top: 8px; }
+
+/* ---------- login ---------- */
+
+.login { max-width: 380px; margin: 6vh auto; text-align: center; }
+.login-logo { height: 120px; width: auto; margin: 0 auto 18px; display: block; }
+.login h1 { font-size: 1.35rem; }
+.login form { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 24px; text-align: left; }
+.login label { display: block; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; }
+.login input {
+  width: 100%; font: inherit; padding: 10px 12px; margin-bottom: 16px;
+  border: 1px solid var(--line); border-radius: 6px;
+}
+.login input:focus { outline: none; border-color: var(--brown); box-shadow: 0 0 0 3px rgba(127, 83, 38, .14); }
+.login .btn { width: 100%; }
+
+.foot { text-align: center; color: var(--muted); font-size: 12.5px; padding: 0 24px 30px; }
+
+@media (max-width: 760px) {
+  .cards, .img-grid { grid-template-columns: 1fr; }
+  .bar nav { margin-left: 0; width: 100%; }
+  .wrap { padding: 22px 16px 60px; }
+}

@@ -1,3 +1,10 @@
+# Content the owner edits through /admin. Deliberately NOT tracked: the site
+# deploys from Git, so a deploy would overwrite their changes.
+data/
+
+# Photos uploaded through /admin, for the same reason.
+assets/img/uploads/
+
 # generated on the server by form-handler.php
 enquiries.log
 
