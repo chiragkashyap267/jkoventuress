@@ -62,22 +62,12 @@ function content_default(string $key): string
 
 /**
  * Page copy. The manifest supplies the default, so a page never needs to
- * repeat it and the two can never drift apart. Output allows the handful of
- * inline tags the designs use; everything else is escaped.
+ * repeat it and the two can never drift apart. The stored text is plain:
+ * see rich() for the two things it is allowed to do.
  */
 function t(string $key): string
 {
     return rich(content_get('text', $key, content_default($key)));
-}
-
-/**
- * Text that is allowed to carry the small set of inline tags the designs use
- * (<br>, <em>, <strong>). Everything else is escaped, so a panel edit cannot
- * inject markup or script into a page.
- */
-function t_rich(string $key, string $default = ''): string
-{
-    return rich(content_get('text', $key, $default));
 }
 
 /**
@@ -94,7 +84,7 @@ function contact_fields(): array
         'phone_primary'   => ['label' => 'Main phone',      'default' => '+91 96542 72273'],
         'phone_secondary' => ['label' => 'Second phone',    'default' => '+91 93199 16172'],
         'address_line1'   => ['label' => 'Address line 1',  'default' => 'B-227, Basement, Greater Kailash 1'],
-        'address_line2'   => ['label' => 'Address line 2',  'default' => 'New Delhi &ndash; 110048, India'],
+        'address_line2'   => ['label' => 'Address line 2',  'default' => 'New Delhi – 110048, India'],
     ];
 }
 
@@ -132,7 +122,6 @@ function image_path(string $slot): string
 function contact(string $key): string
 {
     $d = contact_fields()[$key]['default'] ?? '';
-    // the shipped address carries an &ndash; entity, so allow entities through
     return rich(content_get('contact', $key, $d));
 }
 
@@ -160,20 +149,45 @@ function e(string $s): string
 }
 
 /**
- * Escape everything, then put back only what the copy legitimately uses:
- * <br>, <em>, <strong>, <em class="metal">, and HTML entities such as &amp;
- * and &ndash;. Restoring entities is safe because the pattern can only ever
- * produce an entity reference, never a tag. Anything else an editor types -
- * a <script>, an onclick, a stray < - stays escaped.
+ * The whole editing format, in two rules:
+ *
+ *     a new line   ->  a line break
+ *     *a word*     ->  that word in gold
+ *
+ * That is all of it. No HTML is required and none is honoured: the text is
+ * escaped first, so anything that looks like a tag - a <script>, an onclick,
+ * a stray < - is shown as plain text and cannot alter the page.
  */
 function rich(string $s): string
 {
-    $out = e($s);
-    $out = preg_replace('#&amp;([a-zA-Z][a-zA-Z0-9]{1,30}|\#[0-9]{1,6}|\#x[0-9a-fA-F]{1,5});#', '&$1;', $out) ?? $out;
-    $out = preg_replace('#&lt;br\s*/?&gt;#i', '<br />', $out) ?? $out;
-    $out = preg_replace('#&lt;(/?)(em|strong)&gt;#i', '<$1$2>', $out) ?? $out;
-    $out = preg_replace('#&lt;em class=&quot;metal&quot;&gt;#i', '<em class="metal">', $out) ?? $out;
-    return $out;
+    $out = e(content_plain($s));
+    // Gold. The stars must hug the words - "2 * 3 * 4" is arithmetic, not
+    // formatting - and may not span a line break, so a lone star is harmless.
+    $out = preg_replace('/\*(\S[^*\r\n]{0,118}\S|\S)\*/u', '<em class="metal">$1</em>', $out) ?? $out;
+
+    return str_replace("\n", '<br />', $out);
+}
+
+/**
+ * Bring a stored value into the plain format, so the editor shows the owner
+ * readable text rather than markup. Anything saved before the panel dropped
+ * HTML still carries <br> and <em class="metal">; those are translated here
+ * instead of being put in front of the owner as raw tags.
+ */
+function content_plain(string $s): string
+{
+    $s = preg_replace('#<em\s+class=["\']metal["\']\s*>(.*?)</em>#is', '*$1*', $s) ?? $s;
+    $s = preg_replace('#</?(em|strong)\s*>#i', '', $s) ?? $s;
+    $s = preg_replace('#<br\s*/?>#i', "\n", $s) ?? $s;
+    $s = html_entity_decode($s, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+    return str_replace(["\r\n", "\r"], "\n", $s);
+}
+
+/** The plain text behind a key, for the editor to put in its box. */
+function content_plain_value(string $section, string $key, string $default = ''): string
+{
+    return content_plain(content_get($section, $key, $default));
 }
 
 /** tel: href built from a displayed phone number. */

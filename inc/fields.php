@@ -14,7 +14,7 @@ function content_fields(): array
             'page'    => "Home",
             'slug'    => "index",
             'type'    => "rich",
-            'default' => "Corporate &amp;<br /><em class=\"metal\">Customised</em> Gifting",
+            'default' => "Corporate &\n*Customised* Gifting",
         ],
         "index.sub" => [
             'label'   => "Sub-heading",
@@ -28,14 +28,14 @@ function content_fields(): array
             'page'    => "Home",
             'slug'    => "index",
             'type'    => "textarea",
-            'default' => "At J&amp;Ko Ventures we believe a gift is more than an object — it is a thoughtful expression of appreciation, recognition, celebration and connection. We help businesses create gifting experiences their people actually remember.",
+            'default' => "At J&Ko Ventures we believe a gift is more than an object — it is a thoughtful expression of appreciation, recognition, celebration and connection. We help businesses create gifting experiences their people actually remember.",
         ],
         "index.lede2" => [
             'label'   => "Intro paragraph 2",
             'page'    => "Home",
             'slug'    => "index",
             'type'    => "textarea",
-            'default' => "J&amp;Ko Ventures was created with a vision to transform corporate gifting from a routine business activity into an opportunity to build stronger relationships.",
+            'default' => "J&Ko Ventures was created with a vision to transform corporate gifting from a routine business activity into an opportunity to build stronger relationships.",
         ],
         "index.label1" => [
             'label'   => "Section label",
@@ -105,7 +105,7 @@ function content_fields(): array
             'page'    => "Home",
             'slug'    => "index",
             'type'    => "text",
-            'default' => "Let&rsquo;s Create Something Meaningful",
+            'default' => "Let’s Create Something Meaningful",
         ],
         "index.heading1" => [
             'label'   => "Section heading",
@@ -175,14 +175,14 @@ function content_fields(): array
             'page'    => "About",
             'slug'    => "about",
             'type'    => "rich",
-            'default' => "Thoughtful gifting.<br />Meaningful <em class=\"metal\">connections</em>.",
+            'default' => "Thoughtful gifting.\nMeaningful *connections*.",
         ],
         "about.lede" => [
             'label'   => "Intro paragraph",
             'page'    => "About",
             'slug'    => "about",
             'type'    => "textarea",
-            'default' => "At J&amp;Ko Ventures, we believe that a gift is more than just an object — it is a thoughtful expression of appreciation, recognition, celebration and connection.",
+            'default' => "At J&Ko Ventures, we believe that a gift is more than just an object — it is a thoughtful expression of appreciation, recognition, celebration and connection.",
         ],
         "about.lede2" => [
             'label'   => "Intro paragraph 2",
@@ -210,7 +210,7 @@ function content_fields(): array
             'page'    => "About",
             'slug'    => "about",
             'type'    => "text",
-            'default' => "Vision &amp; Mission",
+            'default' => "Vision & Mission",
         ],
         "about.label4" => [
             'label'   => "Section label 4",
@@ -231,7 +231,7 @@ function content_fields(): array
             'page'    => "About",
             'slug'    => "about",
             'type'    => "text",
-            'default' => "Let&rsquo;s Create Something Meaningful",
+            'default' => "Let’s Create Something Meaningful",
         ],
         "about.heading1" => [
             'label'   => "Section heading",
@@ -266,14 +266,14 @@ function content_fields(): array
             'page'    => "About",
             'slug'    => "about",
             'type'    => "rich",
-            'default' => "Let&rsquo;s turn your ideas into gifts that people remember",
+            'default' => "Let’s turn your ideas into gifts that people remember",
         ],
         "services.h1" => [
             'label'   => "Main heading",
             'page'    => "Gifting Solutions",
             'slug'    => "services",
             'type'    => "rich",
-            'default' => "End-to-end <em class=\"metal\">gifting</em> solutions",
+            'default' => "End-to-end *gifting* solutions",
         ],
         "services.lede" => [
             'label'   => "Intro paragraph",
@@ -294,7 +294,7 @@ function content_fields(): array
             'page'    => "Gifting Solutions",
             'slug'    => "services",
             'type'    => "text",
-            'default' => "Corporate &amp; Executive",
+            'default' => "Corporate & Executive",
         ],
         "services.label3" => [
             'label'   => "Section label 3",
@@ -315,14 +315,14 @@ function content_fields(): array
             'page'    => "Gifting Solutions",
             'slug'    => "services",
             'type'    => "text",
-            'default' => "Merchandise &amp; Promotional",
+            'default' => "Merchandise & Promotional",
         ],
         "services.label6" => [
             'label'   => "Section label 6",
             'page'    => "Gifting Solutions",
             'slug'    => "services",
             'type'    => "text",
-            'default' => "Recognition &amp; Workplace Identity",
+            'default' => "Recognition & Workplace Identity",
         ],
         "services.label7" => [
             'label'   => "Section label 7",
@@ -392,7 +392,7 @@ function content_fields(): array
             'page'    => "Occasions",
             'slug'    => "occasions",
             'type'    => "rich",
-            'default' => "Gifting is not limited<br />to <em class=\"metal\">festivals</em>",
+            'default' => "Gifting is not limited\nto *festivals*",
         ],
         "occasions.lede" => [
             'label'   => "Intro paragraph",
@@ -420,14 +420,14 @@ function content_fields(): array
             'page'    => "Occasions",
             'slug'    => "occasions",
             'type'    => "text",
-            'default' => "Your Clients &amp; Partners",
+            'default' => "Your Clients & Partners",
         ],
         "occasions.label4" => [
             'label'   => "Section label 4",
             'page'    => "Occasions",
             'slug'    => "occasions",
             'type'    => "text",
-            'default' => "Launches &amp; Campaigns",
+            'default' => "Launches & Campaigns",
         ],
         "occasions.label5" => [
             'label'   => "Section label 5",
@@ -483,7 +483,7 @@ function content_fields(): array
             'page'    => "Our Approach",
             'slug'    => "approach",
             'type'    => "rich",
-            'default' => "Great gifting starts<br />with <em class=\"metal\">understanding</em>",
+            'default' => "Great gifting starts\nwith *understanding*",
         ],
         "approach.lede" => [
             'label'   => "Intro paragraph",
@@ -574,7 +574,7 @@ function content_fields(): array
             'page'    => "Why Us",
             'slug'    => "why-us",
             'type'    => "rich",
-            'default' => "More than a supplier.<br />A gifting <em class=\"metal\">partner</em>.",
+            'default' => "More than a supplier.\nA gifting *partner*.",
         ],
         "why-us.lede" => [
             'label'   => "Intro paragraph",
@@ -595,7 +595,7 @@ function content_fields(): array
             'page'    => "Why Us",
             'slug'    => "why-us",
             'type'    => "text",
-            'default' => "Vision &amp; Mission",
+            'default' => "Vision & Mission",
         ],
         "why-us.label3" => [
             'label'   => "Section label 3",
@@ -630,14 +630,14 @@ function content_fields(): array
             'page'    => "Why Us",
             'slug'    => "why-us",
             'type'    => "rich",
-            'default' => "Let&rsquo;s create something meaningful",
+            'default' => "Let’s create something meaningful",
         ],
         "contact.h1" => [
             'label'   => "Main heading",
             'page'    => "Contact",
             'slug'    => "contact",
             'type'    => "rich",
-            'default' => "Let&rsquo;s turn your ideas into<br />gifts people <em class=\"metal\">remember</em>",
+            'default' => "Let’s turn your ideas into\ngifts people *remember*",
         ],
         "contact.lede" => [
             'label'   => "Intro paragraph",
@@ -651,7 +651,7 @@ function content_fields(): array
             'page'    => "Contact",
             'slug'    => "contact",
             'type'    => "text",
-            'default' => "Let&rsquo;s Create Something Meaningful",
+            'default' => "Let’s Create Something Meaningful",
         ],
         "contact.label2" => [
             'label'   => "Section label 2",
@@ -693,7 +693,7 @@ function content_fields(): array
             'page'    => "Not Found",
             'slug'    => "404",
             'type'    => "rich",
-            'default' => "This page has<br />gone <em class=\"metal\">missing</em>",
+            'default' => "This page has\ngone *missing*",
         ],
         "404.lede" => [
             'label'   => "Intro paragraph",

@@ -77,16 +77,17 @@ flash_show();
     <div class="field">
       <label for="f-<?= e($key) ?>"><?= e($f['label']) ?></label>
       <?php
-        // show &amp; as & and &ndash; as - : the owner edits readable text,
-        // and the page layer re-escapes whatever comes back
-        $val = html_entity_decode((string) ($current[$key] ?? $f['default']), ENT_QUOTES, 'UTF-8');
+        // The owner edits plain readable text. Headings keep a box they can
+        // press Enter in, because a new line there is a line break on the page.
+        $val  = content_plain((string) ($current[$key] ?? $f['default']));
+        $rows = $f['type'] === 'textarea' ? 3 : 2;
       ?>
-      <?php if ($f['type'] === 'textarea'): ?>
-        <textarea id="f-<?= e($key) ?>" name="f[<?= e($key) ?>]" rows="3"><?= e($val) ?></textarea>
-      <?php else: ?>
+      <?php if ($f['type'] === 'text'): ?>
         <input id="f-<?= e($key) ?>" name="f[<?= e($key) ?>]" type="text" value="<?= e($val) ?>" />
+      <?php else: ?>
+        <textarea id="f-<?= e($key) ?>" name="f[<?= e($key) ?>]" rows="<?= $rows ?>"><?= e($val) ?></textarea>
       <?php endif; ?>
-      <span class="hint">Original: <?= e(html_entity_decode($f['default'], ENT_QUOTES, 'UTF-8')) ?></span>
+      <span class="hint">Original: <?= nl2br(e(content_plain($f['default'])), false) ?></span>
     </div>
   <?php endforeach; ?>
 
@@ -97,9 +98,10 @@ flash_show();
 </form>
 
 <p class="note">
-  <strong>&lt;br /&gt;</strong> starts a new line and
-  <strong>&lt;em class="metal"&gt;word&lt;/em&gt;</strong> makes a word gold.
-  Any other HTML is shown as plain text rather than applied, so nothing you type
-  here can break the page.
+  Just write normally. Two things are worth knowing:
+  press <strong>Enter</strong> to start a new line, and put
+  <strong>*stars*</strong> around a word to show it in gold &mdash; like
+  <strong>*Customised*</strong>. Everything else you type appears exactly as
+  written, so nothing here can break the page.
 </p>
 <?php admin_foot();

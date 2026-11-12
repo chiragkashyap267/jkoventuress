@@ -39,13 +39,13 @@ Underneath every box it says *Original:* followed by the wording the site
 launched with. **If you ever want to go back, just empty the box and save** —
 the original comes straight back.
 
-You may see two pieces of code in some boxes:
+Just write normally. There are only two things to know:
 
-- `<br />` starts a new line
-- `<em class="metal">word</em>` makes a word gold
+- **Press Enter** to start a new line.
+- **Put \*stars\* around a word** to show it in gold, like `*Customised*`.
 
-Leave them where they are if you like how the page looks. Anything else you
-type is shown exactly as written, so you cannot accidentally break a page.
+Everything else appears on the page exactly as you typed it, so you cannot
+accidentally break anything.
 
 ### Images
 

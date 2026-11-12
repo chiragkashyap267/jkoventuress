@@ -89,14 +89,36 @@ has changed. So:
 - clearing a field in the panel restores the original (the override is dropped)
 - `inc/fields.php` is generated from the markup, so defaults cannot drift
 
-`t()` escapes everything, then re-allows only `<br>`, `<em>`, `<strong>` and
-HTML entities. A `<script>` typed into the panel renders as visible text.
+### The editing format
+
+The owner never types HTML. Stored text is plain, and `rich()` applies exactly
+two rules on output:
+
+| In the panel | On the page |
+|---|---|
+| a new line | `<br />` |
+| `*a word*` | `<em class="metal">a word</em>` |
+
+Everything is escaped first, so a `<script>` typed into the panel renders as
+visible text. The stars must hug the words, so `2 * 3 * 4` stays arithmetic.
+
+`content_plain()` translates a stored value back to that format, which is what
+the editor puts in its boxes — and it also understands the `<br>`/`<em
+class="metal">`/entity markup the panel used before, so data saved by an
+earlier version still renders and still edits cleanly.
+
+Defaults in `inc/fields.php` are in the plain format too, with literal `’` and
+`–` rather than entities.
 
 ### Adding a new editable field
 
 1. Add the key to `inc/fields.php` with its `label`, `page`, `type` and
-   `default` (the current wording).
+   `default` (the current wording, written in the plain format above — `\n`
+   for a line break, `*word*` for gold, never HTML).
 2. Replace the text in the page with `<?= t('your.key') ?>`.
+
+`type` is `text` (one-line input), `rich` (small box, line breaks allowed) or
+`textarea` (paragraph box).
 
 The admin form generates itself from the manifest — there is no form to edit.
 

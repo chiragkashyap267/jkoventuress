@@ -104,14 +104,17 @@ function store_update_section(string $section, array $values, callable $defaultF
         if (!is_string($val)) {
             continue;
         }
-        $val = trim(preg_replace('/\R/u', ' ', $val) ?? '');
+        // Line breaks are part of the content now - a new line in the box is a
+        // line break on the page - so they survive, normalised to \n. Every
+        // other control character goes.
+        $val = str_replace(["\r\n", "\r"], "\n", $val);
         $val = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/u', '', $val) ?? '';
+        $val = trim($val);
 
-        // The editor shows entities decoded (& rather than &amp;), so compare
-        // decoded on both sides - otherwise saving an untouched field would
-        // store an "override" identical to the original.
-        $dec = static fn(string $x): string => html_entity_decode($x, ENT_QUOTES, 'UTF-8');
-        if ($val === '' || $dec($val) === $dec($defaultFor((string) $key))) {
+        // Compare in the plain format on both sides, so an untouched field is
+        // never stored as an "override" identical to the original - including
+        // when the manifest default still carries old markup.
+        if ($val === '' || content_plain($val) === content_plain($defaultFor((string) $key))) {
             continue;                       // back to shipped text
         }
         $clean[(string) $key] = mb_substr($val, 0, 2000);

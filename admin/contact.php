@@ -49,8 +49,8 @@ flash_show();
     <div class="field">
       <label for="f-<?= e($key) ?>"><?= e($f['label']) ?></label>
       <input id="f-<?= e($key) ?>" name="f[<?= e($key) ?>]" type="text"
-             value="<?= e(html_entity_decode((string) ($current[$key] ?? $f['default']), ENT_QUOTES, 'UTF-8')) ?>" />
-      <span class="hint">Original: <?= e(html_entity_decode($f['default'], ENT_QUOTES, 'UTF-8')) ?></span>
+             value="<?= e(content_plain((string) ($current[$key] ?? $f['default']))) ?>" />
+      <span class="hint">Original: <?= e(content_plain($f['default'])) ?></span>
     </div>
   <?php endforeach; ?>
 
